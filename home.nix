@@ -133,4 +133,22 @@
     ];
   };
   programs.msmtp.enable = true;
+  programs.ssh = {
+    enable = true;
+    matchBlocks = {
+      "nest" = {
+        hostname = "hackclub.app";
+        remoteForwards = [
+          {
+            bind.address = "/run/user/2376/gnupg/S.gpg-agent";
+            host.address = "${homePath}/.gnupg/S.gpg-agent.extra";
+          }
+        ];
+        extraOptions = {
+          RequestTTY = "yes";
+          RemoteCommand = "tmux -CC new-session -A -s main";
+        };
+      };
+    };
+  };
 }
