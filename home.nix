@@ -77,6 +77,7 @@
     EDITOR = "nvim";
   };
 
+  accounts.email.certificatesFile = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   accounts.email.accounts = {
     "jomarm" = {
       address = "jomarm@jomarm.com";
@@ -118,6 +119,7 @@
     extraConfig = {
       init.defaultBranch = "master";
       tag.forceSignAnnotated = true;
+      sendemail.identity = "jomarm";
       "diff \"json\"".textconv = "${pkgs.jq}/bin/jq .";
     };
   };
@@ -130,4 +132,5 @@
       }
     ];
   };
+  programs.msmtp.enable = true;
 }
