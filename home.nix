@@ -36,6 +36,8 @@
     # '')
 
     pkgs.neovim
+    # mason and similar tools need node
+    pkgs.nodejs_23
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
