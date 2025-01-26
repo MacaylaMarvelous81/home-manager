@@ -38,6 +38,7 @@
     pkgs.neovim
     # mason and similar tools need node
     pkgs.nodejs_23
+    pkgs.mosh
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -146,10 +147,6 @@
             host.address = "${homePath}/.gnupg/S.gpg-agent.extra";
           }
         ];
-        extraOptions = {
-          RequestTTY = "yes";
-          RemoteCommand = "tmux -CC new-session -A -s main";
-        };
       };
     };
   };
