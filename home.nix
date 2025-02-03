@@ -100,7 +100,7 @@
         tls.enable = true;
       };
       userName = "jomarm@jomarm.com";
-      passwordCommand = "gpg --decrypt ~/.secrets/email/jomarm";
+      passwordCommand = "${pkgs.gnupg}/bin/gpg --decrypt ~/.secrets/email/jomarm";
       primary = true;
       realName = "Jomar Milan";
       msmtp.enable = true;
