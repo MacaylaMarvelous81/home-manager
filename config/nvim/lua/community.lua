@@ -9,7 +9,6 @@ return {
   { import = "astrocommunity.pack.rust" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.typst" },
-  { import = "astrocommunity.media.vim-wakatime" },
   { import = "astrocommunity.terminal-integration.toggleterm-manager-nvim" },
   -- import/override with your plugins folder
 }
