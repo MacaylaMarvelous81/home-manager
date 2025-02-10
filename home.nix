@@ -156,4 +156,5 @@
     mouse = true;
     newSession = true;
   };
+  programs.lazygit.enable = true;
 }
