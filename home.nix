@@ -111,6 +111,7 @@
   programs.home-manager.enable = true;
 
   programs.zsh.enable = true;
+  programs.bash.enable = true;
   programs.git = {
     enable = true;
     userName = "Jomar Milan";
@@ -157,4 +158,6 @@
     newSession = true;
   };
   programs.lazygit.enable = true;
+
+  services.psd.enable = true;
 }
