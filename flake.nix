@@ -27,7 +27,7 @@
             # Optionally use extraSpecialArgs
             # to pass through arguments to home.nix
             extraSpecialArgs = {
-              homePath = if builtins.match ".*darwin.*" system != null then "/Users/jomarm" else "/home/jomarm";
+              isDarwin = builtins.match ".*darwin.*" system != null;
             };
           };
         }
