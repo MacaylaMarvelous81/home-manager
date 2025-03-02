@@ -165,5 +165,6 @@
     enableBashIntegration = true;
     enableExtraSocket = true;
     enableZshIntegration = true;
+    pinentryPackage = if isDarwin then pkgs.pinentry_mac else pkgs.pinentry-curses;
   };
 }
