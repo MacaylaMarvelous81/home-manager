@@ -160,4 +160,10 @@
   programs.lazygit.enable = true;
 
   services.psd.enable = true;
+  services.gpg-agent = {
+    enable = true;
+    enableBashIntegration = true;
+    enableExtraSocket = true;
+    enableZshIntegration = true;
+  };
 }
