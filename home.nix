@@ -145,7 +145,10 @@
         remoteForwards = [
           {
             bind.address = "/run/user/2376/gnupg/S.gpg-agent";
-            host.address = "${homePath}/.gnupg/S.gpg-agent.extra";
+            host.address = if isDarwin then
+              "/private/var/run/org.nix-community.home.gpg-agent/S.gpg-agent.extra"
+            else
+              "/run/user/%i/gnupg/S.gpg-agent.extra";
           }
         ];
       };
