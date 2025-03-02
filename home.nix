@@ -162,7 +162,7 @@
   };
   programs.lazygit.enable = true;
 
-  services.psd.enable = true;
+  services.psd.enable = !isDarwin;
   services.gpg-agent = {
     enable = true;
     enableBashIntegration = true;
