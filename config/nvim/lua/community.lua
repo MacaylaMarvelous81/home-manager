@@ -11,6 +11,7 @@ return {
   { import = "astrocommunity.pack.typst" },
   { import = "astrocommunity.pack.nix" },
   { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.astro" },
   { import = "astrocommunity.terminal-integration.toggleterm-manager-nvim" },
   -- import/override with your plugins folder
 }
