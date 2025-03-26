@@ -81,6 +81,10 @@
     EDITOR = "nvim";
   };
 
+  systemd.user.sessionVariables = {
+    VINTAGE_STORY = "/home/jomarm/.local/share/vintagestory";
+  };
+
   accounts.email.certificatesFile = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
   accounts.email.accounts = {
     "jomarm" = {
