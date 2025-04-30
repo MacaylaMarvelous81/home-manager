@@ -157,6 +157,10 @@
           }
         ];
       };
+      "wssnest" = {
+        hostname = "hackclub.app";
+        proxyCommand = "${pkgs.websocat}/bin/websocat --binary wss://sshws.hackclub.app";
+      };
     };
   };
   programs.tmux = {
