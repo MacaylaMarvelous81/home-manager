@@ -79,6 +79,7 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    DIFFPROG = "${pkgs.neovim}/bin/nvim -d";
   };
 
   systemd.user.sessionVariables = {
