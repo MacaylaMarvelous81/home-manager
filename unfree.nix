@@ -1,4 +1,4 @@
-{ nixpkgs, lib, config, pkgs, ... }:
+{ nixpkgs, lib, config, pkgs, isDarwin, ... }:
 
 {
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
@@ -6,7 +6,7 @@
     "steam-unwrapped"
   ];
 
-  home.packages = [
+  home.packages = [] ++ lib.optionals (!isDarwin) [
     pkgs.steamcmd
   ];
 }
