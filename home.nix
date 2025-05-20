@@ -40,6 +40,7 @@
     pkgs.nodejs_23
     pkgs.mosh
     pkgs.lftp
+    pkgs.rustup
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
