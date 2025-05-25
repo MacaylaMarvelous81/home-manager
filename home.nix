@@ -175,7 +175,10 @@
   };
   programs.lazygit.enable = true;
 
-  services.psd.enable = !isDarwin;
+  services.psd = {
+    enable = !isDarwin;
+    browsers = [ "firefox "];
+  };
   services.gpg-agent = {
     enable = true;
     enableBashIntegration = true;
