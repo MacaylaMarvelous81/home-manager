@@ -95,7 +95,7 @@
       address = "jomarm@jomarm.com";
       gpg = {
         encryptByDefault = true;
-        key = "jomarm@jomarm.com";
+        key = "F954C5C95AE7A312183DA76C6AC46A6F9A5618D8";
         signByDefault = true;
       };
       imap = {
@@ -113,6 +113,7 @@
       primary = true;
       realName = "Jomar Milan";
       msmtp.enable = true;
+      thunderbird.enable = !isDarwin;
     };
   };
 
@@ -174,6 +175,15 @@
     newSession = true;
   };
   programs.lazygit.enable = true;
+  programs.thunderbird = {
+    enable = !isDarwin;
+    profiles = {
+      primary = {
+        isDefault = true;
+        withExternalGnupg = true;
+      };
+    };
+  };
 
   services.psd = {
     enable = !isDarwin;
