@@ -95,7 +95,7 @@
       address = "jomarm@jomarm.com";
       gpg = {
         encryptByDefault = true;
-        key = "F954C5C95AE7A312183DA76C6AC46A6F9A5618D8";
+        key = "6AC46A6F9A5618D8";
         signByDefault = true;
       };
       imap = {
@@ -194,6 +194,6 @@
     enableBashIntegration = true;
     enableExtraSocket = true;
     enableZshIntegration = true;
-    pinentryPackage = if isDarwin then pkgs.pinentry_mac else pkgs.pinentry-curses;
+    pinentryPackage = if isDarwin then pkgs.pinentry_mac else pkgs.pinentry-qt;
   };
 }
