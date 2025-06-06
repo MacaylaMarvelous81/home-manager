@@ -37,7 +37,7 @@
 
     pkgs.neovim
     # mason and similar tools need node
-    pkgs.nodejs_23
+    pkgs.nodejs
     pkgs.mosh
     pkgs.lftp
     pkgs.rustup
@@ -194,6 +194,6 @@
     enableBashIntegration = true;
     enableExtraSocket = true;
     enableZshIntegration = true;
-    pinentryPackage = if isDarwin then pkgs.pinentry_mac else pkgs.pinentry-qt;
+    pinentry.package = if isDarwin then pkgs.pinentry_mac else pkgs.pinentry-qt;
   };
 }
