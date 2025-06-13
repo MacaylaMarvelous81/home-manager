@@ -35,6 +35,9 @@ return {
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
+
+        -- typst.vim recommended style doesn't seem to align with Typst's recommended style...?
+        typst_recommended_style = false,
       },
     },
     -- Mappings can be configured through AstroCore as well.
@@ -66,8 +69,8 @@ return {
         -- ["<C-S>"] = false,
 
         -- don't copy by default
-        ["x"] = { "\"_x" },
-        ["d"] = { "\"_d" },
+        ["x"] = { '"_x' },
+        ["d"] = { '"_d' },
       },
     },
   },
