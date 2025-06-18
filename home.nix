@@ -41,6 +41,7 @@
     pkgs.mosh
     pkgs.lftp
     pkgs.rustup
+    pkgs.git-filter-repo
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
