@@ -84,7 +84,7 @@
     DIFFPROG = "${pkgs.neovim}/bin/nvim -d";
   };
 
-  home.sessionPath = ["$HOME/bin"];
+  home.sessionPath = [ "$HOME/bin" "$HOME/.local/bin" ];
 
   systemd.user.sessionVariables = {
     VINTAGE_STORY = "/home/jomarm/.local/share/vintagestory";
