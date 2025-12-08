@@ -1,10 +1,10 @@
-{ config, pkgs, isDarwin, ... }:
+{ config, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jomarm";
-  home.homeDirectory = if isDarwin then "/Users/jomarm" else "/home/jomarm";
+  home.homeDirectory = if pkgs.stdenv.hostPlatform.isDarwin then "/Users/jomarm" else "/home/jomarm";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -34,14 +34,11 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-
-    pkgs.neovim
-    # mason and similar tools need node
-    pkgs.nodejs
-    pkgs.mosh
-    pkgs.lftp
-    pkgs.rustup
-    pkgs.git-filter-repo
+    (pkgs.callPackage ((builtins.fetchTarball "https://github.com/nix-community/nix4nvchad/archive/3ce15d9ae05d9562da5ae6bff750ab19f3cf0862.tar.gz") + "/nix/nvchad.nix") {
+      starterRepo = builtins.fetchTarball "https://github.com/NvChad/starter/archive/e3572e1f5e1c297212c3deeb17b7863139ce663e.tar.gz";
+      neovim = pkgs.neovim;
+      gcc_new = pkgs.gcc;
+    })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -59,8 +56,6 @@
     # '';
 
     ".secrets".source = ./secrets;
-
-    ".config/nvim".source = ./config/nvim;
   };
 
   # Home Manager can also manage your environment variables through
@@ -80,11 +75,10 @@
   #  /etc/profiles/per-user/jomarm/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    EDITOR = "nvim";
     DIFFPROG = "${pkgs.neovim}/bin/nvim -d";
   };
 
-  home.sessionPath = [ "$HOME/bin" "$HOME/.local/bin" ];
+  home.sessionPath = ["$HOME/bin" "$HOME/.local/bin" ];
 
   systemd.user.sessionVariables = {
     VINTAGE_STORY = "/home/jomarm/.local/share/vintagestory";
@@ -113,8 +107,22 @@
       passwordCommand = "${pkgs.gnupg}/bin/gpg --decrypt ~/.secrets/email/jomarm";
       primary = true;
       realName = "Jomar Milan";
-      msmtp.enable = true;
-      thunderbird.enable = !isDarwin;
+
+      # offlineimap = {
+      #   enable = pkgs.stdenv.hostPlatform.isLinux;
+      #   postSyncHookCommand = ./scripts/jomarm-postsynchook;
+      # };
+      aerc = {
+        enable = pkgs.stdenv.hostPlatform.isLinux;
+        extraAccounts = {
+          pgp-opportunistic-encrypt = true;
+          pgp-auto-sign = true;
+          signature-file = ./email/jomarm-sig;
+        };
+        extraBinds = {
+          view.ga = ":pipe -mb git am -3<Enter>";
+        };
+      };
     };
   };
 
@@ -125,17 +133,22 @@
   programs.bash.enable = true;
   programs.git = {
     enable = true;
-    userName = "Jomar Milan";
-    userEmail = "jomarm@jomarm.com";
-    signing = {
-      signByDefault = true;
-      key = "F954C5C95AE7A312183DA76C6AC46A6F9A5618D8";
-    };
-    extraConfig = {
-      init.defaultBranch = "master";
-      tag.forceSignAnnotated = true;
-      sendemail.identity = "jomarm";
-      "diff \"json\"".textconv = "${pkgs.jq}/bin/jq .";
+    package = pkgs.gitFull;
+    settings = {
+      user = {
+        name = "Jomar Milan";
+        email = "jomarm@jomarm.com";
+	signingkey = "F954C5C95AE7A312183DA76C6AC46A6F9A5618D8";
+      };
+      tag = {
+      	gpgsign = true;
+	forcesignannotated = true;
+      };
+      sendemail = {
+      	smtpencryption = "ssl";
+	smtpserver = "smtp.emailarray.com";
+	smtpuser = "jomarm@jomarm.com";
+      };
     };
   };
   programs.gpg = {
@@ -147,47 +160,34 @@
       }
     ];
   };
-  programs.msmtp.enable = true;
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     matchBlocks = {
-      "nest" = {
-        hostname = "hackclub.app";
-        remoteForwards = [
-          {
-            bind.address = "/run/user/2376/gnupg/S.gpg-agent";
-            host.address = if isDarwin then
-              "/private/var/run/org.nix-community.home.gpg-agent/S.gpg-agent.extra"
-            else
-              "/run/user/%i/gnupg/S.gpg-agent.extra";
-          }
-        ];
-      };
-      "wssnest" = {
-        hostname = "hackclub.app";
-        proxyCommand = "${pkgs.websocat}/bin/websocat --binary wss://sshws.hackclub.app";
+      "*" = {
+        userKnownHostsFile = "~/.ssh/known_hosts";
+	controlPath = "~/.ssh/master-%r@%n:%p";
       };
     };
   };
-  programs.tmux = {
-    enable = true;
-    keyMode = "vi";
-    mouse = true;
-    newSession = true;
-  };
-  programs.lazygit.enable = true;
-  programs.thunderbird = {
-    enable = !isDarwin;
-    profiles = {
-      primary = {
-        isDefault = true;
-        withExternalGnupg = true;
-      };
-    };
+  programs.neovim = {
+    enable = false;
+    defaultEditor = true;
+    plugins = with pkgs.vimPlugins; [
+      blink-cmp
+      nvim-highlight-colors
+      snacks-nvim
+      which-key-nvim
+      neo-tree-nvim
+      plenary-nvim
+      nui-nvim
+      aerial-nvim
+      nvim-lspconfig
+    ];
   };
 
   services.psd = {
-    enable = !isDarwin;
+    enable = pkgs.stdenv.hostPlatform.isLinux;
     browsers = [ "firefox "];
   };
   services.gpg-agent = {
@@ -195,6 +195,6 @@
     enableBashIntegration = true;
     enableExtraSocket = true;
     enableZshIntegration = true;
-    pinentry.package = if isDarwin then pkgs.pinentry_mac else pkgs.pinentry-qt;
+    pinentry.package = if pkgs.stdenv.hostPlatform.isDarwin then pkgs.pinentry_mac else pkgs.pinentry-qt;
   };
 }
