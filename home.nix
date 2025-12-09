@@ -34,11 +34,7 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
-    (pkgs.callPackage ((builtins.fetchTarball "https://github.com/nix-community/nix4nvchad/archive/3ce15d9ae05d9562da5ae6bff750ab19f3cf0862.tar.gz") + "/nix/nvchad.nix") {
-      starterRepo = builtins.fetchTarball "https://github.com/NvChad/starter/archive/e3572e1f5e1c297212c3deeb17b7863139ce663e.tar.gz";
-      neovim = pkgs.neovim;
-      gcc_new = pkgs.gcc;
-    })
+    (pkgs.neovim.override { withNodeJs = true; })
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -56,6 +52,22 @@
     # '';
 
     ".secrets".source = ./secrets;
+  };
+
+  xdg.configFile = {
+    "nvim/.luarc.json".source = ./nvim/.luarc.json;
+    "nvim/.neoconf.json".source = ./nvim/.neoconf.json;
+    "nvim/.stylua.toml".source = ./nvim/.stylua.toml;
+    "nvim/init.lua".source = ./nvim/init.lua;
+    "nvim/lua".source = ./nvim/lua;
+    "nvim/lazy-lock.fixed.json" = {
+      source = ./nvim/lazy-lock.fixed.json;
+      onChange = ''
+      install -m 0644 ${ ./nvim/lazy-lock.fixed.json } ${ config.xdg.configHome }/nvim/lazy-lock.json
+      '';
+    };
+    "nvim/neovim.yml".source = ./nvim/neovim.yml;
+    "nvim/selene.toml".source = ./nvim/selene.toml;
   };
 
   # Home Manager can also manage your environment variables through
