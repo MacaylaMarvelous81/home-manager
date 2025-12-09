@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -47,7 +47,19 @@
         --prefix NIX_PATH : nixpkgs=${ sources.nixpkgs }:home-manager=${ sources.home-manager }
       '';
     }))
-    (pkgs.neovim.override { withNodeJs = true; })
+    (pkgs.symlinkJoin (
+      let
+        neovim = pkgs.neovim.override { withNodeJs = true; };
+      in {
+        inherit (neovim) name meta;
+        paths = [ neovim ];
+        nativeBuildInputs = [ pkgs.makeWrapper ];
+        postBuild = ''
+          wrapProgram $out/bin/nvim \
+            --prefix PATH : ${ lib.makeBinPath [ pkgs.nixd pkgs.deadnix pkgs.statix ] }
+        '';
+      }
+    ))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
