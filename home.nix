@@ -34,6 +34,19 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+    (pkgs.symlinkJoin (
+    let
+      sources = import ./npins;
+      home-manager = config.programs.home-manager.package;
+    in {
+      inherit (home-manager) name meta;
+      paths = [ home-manager ];
+      nativeBuildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+      wrapProgram $out/bin/home-manager \
+        --prefix NIX_PATH : nixpkgs=${ sources.nixpkgs }:home-manager=${ sources.home-manager }
+      '';
+    }))
     (pkgs.neovim.override { withNodeJs = true; })
   ];
 
@@ -139,7 +152,8 @@
   };
 
   # Let Home Manager install and manage itself.
-  programs.home-manager.enable = true;
+  # Managed using home.packages above instead.
+  programs.home-manager.enable = false;
 
   programs.zsh.enable = true;
   programs.bash.enable = true;
