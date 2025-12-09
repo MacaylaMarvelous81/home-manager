@@ -10,5 +10,6 @@ return {
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.typst" },
   { import = "astrocommunity.pack.python" },
+  { import = "astrocommunity.pack.nix" },
   -- import/override with your plugins folder
 }
