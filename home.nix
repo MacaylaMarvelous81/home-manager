@@ -1,6 +1,8 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, ... }:
 
 {
+  imports = [ ./modules/programs/neovim ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "jomarm";
@@ -47,19 +49,6 @@
         --prefix NIX_PATH : nixpkgs=${ sources.nixpkgs }:home-manager=${ sources.home-manager }
       '';
     }))
-    (pkgs.symlinkJoin (
-      let
-        neovim = pkgs.neovim.override { withNodeJs = true; };
-      in {
-        inherit (neovim) name meta;
-        paths = [ neovim ];
-        nativeBuildInputs = [ pkgs.makeWrapper ];
-        postBuild = ''
-          wrapProgram $out/bin/nvim \
-            --prefix PATH : ${ lib.makeBinPath [ pkgs.nixd pkgs.deadnix pkgs.statix ] }
-        '';
-      }
-    ))
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -79,22 +68,6 @@
     ".secrets".source = ./secrets;
   };
 
-  xdg.configFile = {
-    "nvim/.luarc.json".source = ./nvim/.luarc.json;
-    "nvim/.neoconf.json".source = ./nvim/.neoconf.json;
-    "nvim/.stylua.toml".source = ./nvim/.stylua.toml;
-    "nvim/init.lua".source = ./nvim/init.lua;
-    "nvim/lua".source = ./nvim/lua;
-    "nvim/lazy-lock.fixed.json" = {
-      source = ./nvim/lazy-lock.fixed.json;
-      onChange = ''
-      install -m 0644 ${ ./nvim/lazy-lock.fixed.json } ${ config.xdg.configHome }/nvim/lazy-lock.json
-      '';
-    };
-    "nvim/neovim.yml".source = ./nvim/neovim.yml;
-    "nvim/selene.toml".source = ./nvim/selene.toml;
-  };
-
   # Home Manager can also manage your environment variables through
   # 'home.sessionVariables'. These will be explicitly sourced when using a
   # shell provided by Home Manager. If you don't want to manage your shell
@@ -112,7 +85,6 @@
   #  /etc/profiles/per-user/jomarm/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    DIFFPROG = "${pkgs.neovim}/bin/nvim -d";
   };
 
   home.sessionPath = ["$HOME/bin" "$HOME/.local/bin" ];
@@ -141,7 +113,7 @@
         tls.enable = true;
       };
       userName = "jomarm@jomarm.com";
-      passwordCommand = "${pkgs.gnupg}/bin/gpg --decrypt ~/.secrets/email/jomarm";
+      passwordCommand = "${config.programs.gpg.package}/bin/gpg --decrypt ~/.secrets/email/jomarm";
       primary = true;
       realName = "Jomar Milan";
 
@@ -157,7 +129,7 @@
           signature-file = ./email/jomarm-sig;
         };
         extraBinds = {
-          view.ga = ":pipe -mb git am -3<Enter>";
+          view.ga = ":pipe -mb ${config.programs.git.package} am -3<Enter>";
         };
       };
     };
@@ -176,16 +148,16 @@
       user = {
         name = "Jomar Milan";
         email = "jomarm@jomarm.com";
-	signingkey = "F954C5C95AE7A312183DA76C6AC46A6F9A5618D8";
+        signingkey = "F954C5C95AE7A312183DA76C6AC46A6F9A5618D8";
       };
       tag = {
-      	gpgsign = true;
-	forcesignannotated = true;
+        gpgsign = true;
+        forcesignannotated = true;
       };
       sendemail = {
-      	smtpencryption = "ssl";
-	smtpserver = "smtp.emailarray.com";
-	smtpuser = "jomarm@jomarm.com";
+        smtpencryption = "ssl";
+        smtpserver = "smtp.emailarray.com";
+        smtpuser = "jomarm@jomarm.com";
       };
     };
   };
@@ -204,24 +176,9 @@
     matchBlocks = {
       "*" = {
         userKnownHostsFile = "~/.ssh/known_hosts";
-	controlPath = "~/.ssh/master-%r@%n:%p";
+        controlPath = "~/.ssh/master-%r@%n:%p";
       };
     };
-  };
-  programs.neovim = {
-    enable = false;
-    defaultEditor = true;
-    plugins = with pkgs.vimPlugins; [
-      blink-cmp
-      nvim-highlight-colors
-      snacks-nvim
-      which-key-nvim
-      neo-tree-nvim
-      plenary-nvim
-      nui-nvim
-      aerial-nvim
-      nvim-lspconfig
-    ];
   };
 
   services.psd = {
