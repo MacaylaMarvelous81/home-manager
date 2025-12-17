@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./modules/programs/neovim ];
+  imports = [ ./modules/programs/neovim ./modules/programs/offlineimap ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -94,6 +94,7 @@
   };
 
   accounts.email.certificatesFile = "${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt";
+  accounts.email.maildirBasePath = "Mail"; # Default is Maildir
   accounts.email.accounts = {
     "jomarm" = {
       address = "jomarm@jomarm.com";
@@ -116,11 +117,7 @@
       passwordCommand = "${config.programs.gpg.package}/bin/gpg --decrypt ~/.secrets/email/jomarm";
       primary = true;
       realName = "Jomar Milan";
-
-      # offlineimap = {
-      #   enable = pkgs.stdenv.hostPlatform.isLinux;
-      #   postSyncHookCommand = ./scripts/jomarm-postsynchook;
-      # };
+      
       aerc = {
         enable = pkgs.stdenv.hostPlatform.isLinux;
         extraAccounts = {
@@ -139,8 +136,16 @@
   # Managed using home.packages above instead.
   programs.home-manager.enable = false;
 
-  programs.zsh.enable = true;
+  programs.zsh = {
+    enable = true;
+    defaultKeymap = "emacs";
+    # initContent = ''
+    #   bindkey "^A" beginning-of-line
+    #   bindkey "^E" end-of-line
+    # '';
+  };
   programs.bash.enable = true;
+  programs.aerc.enable = pkgs.stdenv.hostPlatform.isLinux;
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
