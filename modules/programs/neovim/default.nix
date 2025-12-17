@@ -7,7 +7,7 @@ let
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/nvim \
-        --prefix PATH : ${ lib.makeBinPath [ pkgs.nixd pkgs.deadnix pkgs.statix ] }
+        --prefix PATH : ${ lib.makeBinPath [ pkgs.nixd pkgs.deadnix pkgs.statix pkgs.rust-analyzer ] }
     '';
   });
 in {
