@@ -7,7 +7,15 @@ let
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/nvim \
-        --prefix PATH : ${ lib.makeBinPath [ pkgs.nixd pkgs.deadnix pkgs.statix pkgs.rust-analyzer ] }
+        --prefix PATH : ${ with pkgs; lib.makeBinPath [
+         # Mason core
+          unzip wget
+          # For some reason, despite withPython3, python3 is not in the PATH like Node is
+          pkgs.python3
+         # Nix
+          nixd deadnix statix
+          # Rust
+          rust-analyzer ] }
     '';
   });
 in {
