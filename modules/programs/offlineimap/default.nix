@@ -1,8 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   jomarm-offlineimap-postsynchook = pkgs.rustPlatform.buildRustPackage {
     pname = "jomarm-offlineimap-postsynchook";
     version = "0.1.0";
+
+    buildInputs = lib.optionals pkgs.stdenv.hostPlatform.isLinux [ pkgs.alsa-lib ];
+    nativeBuildInputs = lib.optionals pkgs.stdenv.hostPlatform.isLinux [ pkgs.pkg-config ];
 
     src = pkgs.fetchFromGitHub {
       owner = "MacaylaMarvelous81";

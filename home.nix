@@ -123,7 +123,7 @@
         extraAccounts = {
           pgp-opportunistic-encrypt = true;
           pgp-auto-sign = true;
-          signature-file = ./email/jomarm-sig;
+          signature-file = "${./email/jomarm-sig}";
         };
         extraBinds = {
           view.ga = ":pipe -mb ${config.programs.git.package} am -3<Enter>";
@@ -145,7 +145,16 @@
     # '';
   };
   programs.bash.enable = true;
-  programs.aerc.enable = pkgs.stdenv.hostPlatform.isLinux;
+  programs.aerc = {
+    enable = pkgs.stdenv.hostPlatform.isLinux;
+    extraConfig = {
+      general = {
+        # Necessary due to a documented home-manager limitation. Safe because password command option is used instead
+        # of storing the password directly in the configuration file.
+        unsafe-accounts-conf = true;
+      };
+    };
+  };
   programs.git = {
     enable = true;
     package = pkgs.gitFull;
