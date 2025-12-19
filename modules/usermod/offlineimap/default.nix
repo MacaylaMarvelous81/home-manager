@@ -1,5 +1,6 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
+  cfg = config.usermod.offlineimap;
   jomarm-offlineimap-postsynchook = pkgs.rustPlatform.buildRustPackage {
     pname = "jomarm-offlineimap-postsynchook";
     version = "0.1.0";
@@ -17,10 +18,16 @@ let
     cargoHash = "sha256-xyGHUUeaF7V6IEB7UHZf0eqzZrHUcuEeFiEyMB0vTJ4=";
   };
 in {
-  accounts.email.accounts."jomarm".offlineimap = {
-    enable = pkgs.stdenv.hostPlatform.isLinux;
-    postSyncHookCommand = "${ jomarm-offlineimap-postsynchook }/bin/jomarm-offlineimap-postsynchook";
+  options.usermod.offlineimap = {
+    enable = lib.mkEnableOption "management of offlineimap user config";
   };
 
-  programs.offlineimap.enable = pkgs.stdenv.hostPlatform.isLinux;
+  config = lib.mkIf cfg.enable {
+    accounts.email.accounts."jomarm".offlineimap = {
+      enable = true;
+      postSyncHookCommand = "${ jomarm-offlineimap-postsynchook }/bin/jomarm-offlineimap-postsynchook";
+    };
+
+    programs.offlineimap.enable = true;
+  };
 }
