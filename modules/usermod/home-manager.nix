@@ -1,4 +1,4 @@
-{ sources }: { config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   cfg = config.usermod.home-manager;
   home-manager = config.programs.home-manager.package;
@@ -8,17 +8,20 @@ let
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/home-manager \
-        --prefix NIX_PATH : nixpkgs=${ sources.nixpkgs }:home-manager=${ sources.home-manager } \
+        --prefix NIX_PATH : nixpkgs=${ cfg.sources.nixpkgs }:home-manager=${ cfg.sources.home-manager } \
         --set-default HOME_MANAGER_CONFIG ${ cfg.configLocation }
     '';
   };
 in {
   options.usermod.home-manager = {
     enable = lib.mkEnableOption "wrapped standalone home-manager tool";
+    sources = lib.mkOption {
+      description = "The version-pinned sources from a tool like niv or npins.";
+    };
     configLocation = lib.mkOption {
       type = lib.types.str;
-      default = "$HOME/.config/home-manager/home.nix";
-      example = "$HOME/.config/home-manager/machines/mbp20012/home.nix";
+      default = "${ config.home.homeDirectory }/.config/home-manager/home.nix";
+      example = "\${ config.home.homeDirectory }/.config/home-manager/machines/mbp20012/home.nix";
       description = "The path where the home-manager config file is.";
     };
   };
