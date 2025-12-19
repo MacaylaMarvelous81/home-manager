@@ -1,11 +1,6 @@
-{ ... }:
+{ config, ... }:
 {
-  imports = [
-    ../../common.nix
-    (import ../../modules/usermod/home-manager.nix {
-      sources = import ./npins;
-    })
-  ];
+  imports = [ ../../modules ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -78,8 +73,15 @@
 
   home.sessionPath = [ "$HOME/bin" "$HOME/.local/bin" ];
 
+  usermod.email.enable = true;
+  usermod.gpg.enable = true;
+  usermod.neovim.enable = true;
+  usermod.git.enable = true;
+  usermod.shell.enable = true;
+  usermod.ssh.enable = true;
   usermod.home-manager = {
     enable = true;
-    configLocation = "$HOME/.config/home-manager/machines/mbp2012/home.nix";
+    sources = import ./npins;
+    configLocation = "${ config.home.homeDirectory }/.config/home-manager/machines/mbp2012/home.nix";
   };
 }
