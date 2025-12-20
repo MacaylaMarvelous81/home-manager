@@ -1,15 +1,7 @@
 { config, pkgs, lib, ... }:
 let
   cfg = config.usermod.niri;
-  niri-flake = (import (builtins.fetchTarball "https://github.com/NixOS/flake-compat/archive/65f23138d8d09a92e30f1e5c87611b23ef451bf3.tar.gz") {
-    src = builtins.fetchTarball "https://github.com/sodiboo/niri-flake/archive/bf13a0db31466a2e78b31d82de270d833c8fda4c.tar.gz";
-  });
 in {
-  imports = [
-    niri-flake.outputs.homeModules.niri
-    niri-flake.outputs.homeModules.stylix
-  ];
-
   options.usermod.niri = {
     enable = lib.mkEnableOption "management of niri options using niri-flake";
   };
@@ -173,6 +165,10 @@ in {
             clip-to-geometry = true;
           }
         ];
+
+        debug = {
+          honor-xdg-activation-with-invalid-serial = true;
+        };
 
         layer-rules = [
           {
