@@ -1,6 +1,16 @@
 { config, ... }:
 {
-  imports = [ ../../modules ];
+  imports = let
+    sources = import ./npins;
+    niri-flake = (import sources.flake-compat) { src = sources.niri-flake; };
+  in [
+    ../../modules
+
+    niri-flake.outputs.homeModules.niri
+    niri-flake.outputs.homeModules.stylix
+    "${ sources.noctalia-shell }/nix/home-module.nix"
+    (import sources.stylix).homeModules.stylix
+  ];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
