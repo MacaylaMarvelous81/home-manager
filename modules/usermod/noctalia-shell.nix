@@ -155,8 +155,8 @@ in {
           videoSource = "portal";
         };
         wallpaper = {
-          enabled = true;
-          overviewEnabled = true;
+          enabled = false;
+          overviewEnabled = false;
           directory = "";
           monitorDirectories = [ ];
           enableMultiMonitorDirectories = false;

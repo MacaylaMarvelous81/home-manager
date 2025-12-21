@@ -28,7 +28,7 @@ in {
           tls.enable = true;
         };
         userName = "jomarm@jomarm.com";
-        passwordCommand = "${ config.programs.gpg.package }/bin/gpg --decrypt ${ ./jomarm-pass }";
+        passwordCommand = "cat ${ config.sops.secrets."email/accounts/jomarm".path }";
         primary = true;
         realName = "Jomar Milan";
       };

@@ -11,6 +11,7 @@ in {
       enable = true;
       package = pkgs.gitFull;
       settings = {
+        init.defaultBranch = "master";
         user = {
           name = "Jomar Milan";
           email = "jomarm@jomarm.com";
@@ -25,6 +26,7 @@ in {
           smtpserver = "smtp.emailarray.com";
           smtpuser = "jomarm@jomarm.com";
         };
+        "diff \"json\"".textconv = "${ pkgs.jq }/bin/jq .";
       };
     };
   };

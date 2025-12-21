@@ -170,12 +170,18 @@ in {
           honor-xdg-activation-with-invalid-serial = true;
         };
 
+        spawn-at-startup = [
+          { argv = [ "${ pkgs.linux-wallpaperengine }/bin/linux-wallpaperengine" "--silent" "--screen-root" "eDP-1" "--bg" "${ ../../home-manager-private }/Deathwing - Heroes of the Storm (unpacked)" ]; }
+        ];
+
         layer-rules = [
           {
             matches = [ { namespace = "^noctalia-overview*"; }];
             place-within-backdrop = true;
           }
         ];
+
+        xwayland-satellite.path = "${ pkgs.xwayland-satellite }/bin/xwayland-satellite";
       };
     };
   };
