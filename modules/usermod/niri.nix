@@ -171,7 +171,7 @@ in {
         };
 
         spawn-at-startup = [
-          { argv = [ "${ pkgs.linux-wallpaperengine }/bin/linux-wallpaperengine" "--silent" "--screen-root" "eDP-1" "--bg" "${ ../../home-manager-private }/Deathwing - Heroes of the Storm (unpacked)" ]; }
+          { argv = [ "${ pkgs.linux-wallpaperengine }/bin/linux-wallpaperengine" "--assets-dir" "${ ../../home-manager-private }/depot_431961_19812784/assets" "--silent" "--screen-root" "eDP-1" "--bg" "${ ../../home-manager-private }/Deathwing - Heroes of the Storm (unpacked)" ]; }
         ];
 
         layer-rules = [
