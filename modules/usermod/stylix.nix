@@ -7,6 +7,13 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    stylix.enable = true;
+    stylix = {
+      enable = true;
+
+      image = "${ ../../home-manager-private }/Deathwing - Heroes of the Storm (unpacked)/materials/be94bcb77b47e00d53bc0e7fe44a48c8_1_0_art.jpg";
+      polarity = "dark";
+
+      targets.firefox.profileNames = [ "default" ];
+    };
   };
 }

@@ -19,7 +19,7 @@ in {
           transparent = false;
           showOutline = false;
           showCapsule = true;
-          capsuleOpacity = 1;
+          # capsuleOpacity = 1;
           floating = false;
           marginVertical = 0.25;
           marginHorizontal = 0.25;
@@ -102,12 +102,12 @@ in {
           allowPanelsOnScreenWithoutBar = true;
         };
         ui = {
-          fontDefault = "Sans Serif";
-          fontFixed = "monospace";
+          # fontDefault = "Sans Serif";
+          # fontFixed = "monospace";
           fontDefaultScale = 1;
           fontFixedScale = 1;
           tooltipsEnabled = true;
-          panelBackgroundOpacity = 0.85;
+          # panelBackgroundOpacity = 0.85;
           panelsAttachedToBar = true;
           settingsPanelMode = "attached";
         };
@@ -279,7 +279,7 @@ in {
         dock = {
           enabled = true;
           displayMode = "auto_hide";
-          backgroundOpacity = 1;
+          # backgroundOpacity = 1;
           floatingRatio = 1;
           size = 1;
           onlySameOutput = true;
@@ -332,7 +332,7 @@ in {
           monitors = [ ];
           location = "top_right";
           overlayLayer = true;
-          backgroundOpacity = 1;
+          # backgroundOpacity = 1;
           respectExpireTimeout = false;
           lowUrgencyDuration = 3;
           normalUrgencyDuration = 8;
@@ -353,7 +353,7 @@ in {
           location = "top_right";
           autoHideMs = 2000;
           overlayLayer = true;
-          backgroundOpacity = 1;
+          # backgroundOpacity = 1;
           enabledTypes = [
             0
             1
