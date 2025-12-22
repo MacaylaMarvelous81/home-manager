@@ -8,7 +8,6 @@ in {
 
   config = lib.mkIf cfg.enable {
     accounts.email.certificatesFile = "${ pkgs.cacert }/etc/ssl/certs/ca-bundle.crt";
-    accounts.email.maildirBasePath = "Mail"; # Default is Maildir
     accounts.email.accounts = {
       "jomarm" = {
         address = "jomarm@jomarm.com";

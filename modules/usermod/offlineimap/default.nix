@@ -11,8 +11,8 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "MacaylaMarvelous81";
       repo = "offlineimap-postsynchook";
-      rev = "60e36f34e8a1888fe4e54173527e74ed4e5f1300";
-      hash = "sha256-ptCnyKM++r/SkguGT3urMWN2AeAl4wb+LgwJ3a/CbWg=";
+      rev = "8b13829b034c54207a36dff32b73b08656a685cc";
+      hash = "sha256-VYmGu2ZSmjeR88J+2CZ1L6fu+KLIyuN/omYzUg+Yyyo=";
     };
 
     cargoHash = "sha256-xyGHUUeaF7V6IEB7UHZf0eqzZrHUcuEeFiEyMB0vTJ4=";
@@ -25,7 +25,7 @@ in {
   config = lib.mkIf cfg.enable {
     accounts.email.accounts."jomarm".offlineimap = {
       enable = true;
-      postSyncHookCommand = "${ jomarm-offlineimap-postsynchook }/bin/jomarm-offlineimap-postsynchook";
+      postSyncHookCommand = "${ jomarm-offlineimap-postsynchook }/bin/jomarm-offlineimap-postsynchook ${ config.accounts.email.maildirBasePath }/${ config.accounts.email.accounts."jomarm".maildir.path }/INBOX";
     };
 
     programs.offlineimap.enable = true;
