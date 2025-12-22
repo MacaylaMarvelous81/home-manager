@@ -35,6 +35,18 @@ in {
           TabGroups = false;
           Locked = true;
         };
+        FirefoxHome = {
+          Search = false;
+          TopSites = false;
+          SponsoredTopSites = false;
+          Highlights = false;
+          Pocket = false;
+          Stories = false;
+          SponsoredPocket = false;
+          SponsoredStories = false;
+          Snippets = false;
+          Locked = true;
+        };
         OverrideFirstRunPage = "";
         OverridePostUpdatePage = "";
         DontCheckDefaultBrowser = true;
