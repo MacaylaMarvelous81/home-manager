@@ -164,6 +164,21 @@ in {
             };
             clip-to-geometry = true;
           }
+          {
+            matches = [
+              {
+                app-id = "steam";
+                title = "^notificationtoasts_\\d+_desktop$";
+              }
+            ];
+            default-floating-position = {
+              x = 10;
+              y = 10;
+              relative-to = "bottom-right";
+            };
+            open-focused = false;
+            baba-is-float= true;
+          }
         ];
 
         debug = {
