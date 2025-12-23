@@ -28,6 +28,7 @@ in {
           unsafe-accounts-conf = true;
         };
       };
+      extraBinds = builtins.readFile "${ config.programs.aerc.package }/share/aerc/binds.conf";
     };
   };
 }
