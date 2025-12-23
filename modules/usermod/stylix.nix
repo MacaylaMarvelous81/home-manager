@@ -37,6 +37,8 @@ in {
         dark = "Papirus-Dark";
       };
 
+      opacity.terminal = 0.8;
+
       targets.firefox.profileNames = [ "default" ];
     };
   };
