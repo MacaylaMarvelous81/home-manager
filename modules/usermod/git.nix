@@ -12,6 +12,7 @@ in {
       package = pkgs.gitFull;
       settings = {
         init.defaultBranch = "master";
+        commit.gpgsign = true;
         user = {
           name = "Jomar Milan";
           email = "jomarm@jomarm.com";
