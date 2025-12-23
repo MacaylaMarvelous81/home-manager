@@ -60,7 +60,7 @@ in {
           "Mod+Escape".action = toggle-keyboard-shortcuts-inhibit;
           "Mod+Escape".allow-inhibiting = false;
 
-          "Mod+T".action = spawn "${ pkgs.alacritty }/bin/alacritty";
+          "Mod+T".action = spawn "${ config.programs.alacritty.package }/bin/alacritty";
           "Mod+E".action = spawn "${ pkgs.nautilus }/bin/nautilus" "--new-window";
           "Mod+Z".action = spawn "${ config.programs.neovide.package }/bin/neovide";
 
@@ -157,10 +157,10 @@ in {
         window-rules = [
           {
             geometry-corner-radius = {
-              top-left = 5.0;
-              top-right = 5.0;
-              bottom-left = 5.0;
-              bottom-right = 5.0;
+              top-left = 8.0;
+              top-right = 8.0;
+              bottom-left = 8.0;
+              bottom-right = 8.0;
             };
             clip-to-geometry = true;
           }
@@ -192,6 +192,8 @@ in {
         spawn-at-startup = [
           { argv = [ "${ pkgs.linux-wallpaperengine }/bin/linux-wallpaperengine" "--assets-dir" "${ ../../home-manager-private }/depot_431961_19812784/assets" "--silent" "--screen-root" "eDP-1" "--bg" "${ ../../home-manager-private }/Deathwing - Heroes of the Storm (unpacked)" ]; }
         ];
+
+        prefer-no-csd = true;
 
         xwayland-satellite.path = "${ pkgs.xwayland-satellite }/bin/xwayland-satellite";
       };
