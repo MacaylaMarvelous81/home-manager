@@ -45,7 +45,6 @@ in {
 
     home.sessionVariables = {
       EDITOR = "${ patched-neovim }/bin/nvim";
-      DIFFPROG = "${ patched-neovim }/bin/nvim -d";
     };
 
     programs.neovide = {
