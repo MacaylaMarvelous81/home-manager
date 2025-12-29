@@ -99,6 +99,7 @@ in {
       opacity.terminal = 0.8;
 
       targets.firefox.profileNames = [ "default" ];
+      targets.qt.standardDialogs = if config.xdg.portal.enable then "xdgdesktopportal" else "default";
     };
   };
 }

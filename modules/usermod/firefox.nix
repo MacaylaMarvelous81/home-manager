@@ -9,6 +9,16 @@ in {
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
+      profiles = {
+        default = {
+          settings = lib.mkMerge [
+            (lib.mkIf config.xdg.portal.enable {
+              # 0 = never, 1 = always, 2 = automatic
+              "widget.use-xdg-desktop-portal.file-picker" = 1;
+            })
+          ];
+        };
+      };
       policies = {
         DisableTelemetry = true;
         DisableFirefoxStudies = true;

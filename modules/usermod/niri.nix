@@ -198,5 +198,11 @@ in {
         xwayland-satellite.path = "${ pkgs.xwayland-satellite }/bin/xwayland-satellite";
       };
     };
+    xdg.portal = lib.mkIf config.xdg.portal.enable {
+      config.niri = {
+        default = [ "gtk" ];
+      };
+      extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    };
   };
 }
