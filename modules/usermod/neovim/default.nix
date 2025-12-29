@@ -9,11 +9,13 @@ let
     postBuild = ''
       wrapProgram $out/bin/nvim \
         --prefix PATH : ${ with pkgs; lib.makeBinPath [
-         # Mason core
+          # AstroNvim
+          ripgrep
+          # Mason core
           unzip wget
           # For some reason, despite withPython3, python3 is not in the PATH like Node is
           pkgs.python3
-         # Nix
+          # Nix
           nixd deadnix statix
           # Rust
           rust-analyzer ] }
