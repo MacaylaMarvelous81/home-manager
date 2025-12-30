@@ -84,7 +84,6 @@
   usermod.shell.enable = true;
   usermod.ssh.enable = true;
   usermod.secrets.enable = true;
-  usermod.term.enable = true;
   usermod.home-manager = {
     enable = true;
     sources = import ./npins;
