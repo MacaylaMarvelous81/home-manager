@@ -1,4 +1,4 @@
-{ config, lib, ... }:
+{ config, pkgs, lib, ... }:
 let
   cfg = config.usermod.aerc;
 in {
@@ -26,6 +26,13 @@ in {
           # Necessary due to a documented home-manager limitation. Safe because password command option is used instead
           # of storing the password directly in the configuration file.
           unsafe-accounts-conf = true;
+        };
+        filters = {
+          "text/plain" = "colorize";
+          "text/calendar" = "calendar";
+          "message/delivery-status" = "colorize";
+          "message/rfc822" = "colorize";
+          "text/html" = "!html";
         };
       };
       extraBinds = builtins.readFile "${ config.programs.aerc.package }/share/aerc/binds.conf";
