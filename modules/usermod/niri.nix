@@ -60,7 +60,6 @@ in {
           "Mod+Escape".action = toggle-keyboard-shortcuts-inhibit;
           "Mod+Escape".allow-inhibiting = false;
 
-          "Mod+T".action = spawn "${ config.programs.alacritty.package }/bin/alacritty";
           "Mod+E".action = spawn "${ pkgs.nautilus }/bin/nautilus" "--new-window";
           "Mod+Z".action = spawn "${ config.programs.neovide.package }/bin/neovide";
 

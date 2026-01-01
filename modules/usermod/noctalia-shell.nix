@@ -189,7 +189,6 @@ in {
           pinnedExecs = [ ];
           useApp2Unit = false;
           sortByMostUsed = true;
-          terminalCommand = "${ config.programs.alacritty.package }/bin/alacritty -e";
           customLaunchPrefixEnabled = false;
           customLaunchPrefix = "";
           viewMode = "list";

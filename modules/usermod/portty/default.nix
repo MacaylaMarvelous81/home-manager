@@ -37,6 +37,11 @@ let
 in {
   options.usermod.portty = {
     enable = lib.mkEnableOption "installation of portty portal backend";
+    termProgram = lib.mkOption {
+      type = lib.types.str;
+      default = "${ config.programs.kitty.package }/bin/kitty -e";
+      description = "The command to use for the terminal emulator for portty to open";
+    };
   };
 
   config = lib.mkIf cfg.enable {
@@ -68,7 +73,7 @@ in {
 
     xdg.configFile = {
       "portty/config.toml".text = ''
-        exec = "${ config.programs.alacritty.package }/bin/alacritty -e ${ ./shell-wrapper.sh }"
+        exec = "${ cfg.termProgram } ${ ./shell-wrapper.sh }"
       '';
     };
   };
