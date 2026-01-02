@@ -8,7 +8,7 @@ let
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/home-manager \
-        --prefix NIX_PATH : nixpkgs=${ config.xdg.configHome }/home-manager/pins/nixpkgs:home-manager=${ config.xdg.configHome }/home-manager/pins/home-manager \
+        --prefix NIX_PATH : home-manager=${ config.xdg.configHome }/home-manager/pins/home-manager \
         --set-default HOME_MANAGER_CONFIG ${ cfg.configLocation }
     '';
   };
@@ -28,6 +28,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = [ home-manager-wrapped ];
+
+    nix.nixPath = [ "nixpkgs=${ config.xdg.configHome }/home-manager/pins/nixpkgs" ];
 
     xdg.configFile = {
       "home-manager/pins/nixpkgs".source = cfg.sources.nixpkgs;
