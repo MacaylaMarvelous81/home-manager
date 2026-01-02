@@ -40,6 +40,15 @@ in {
               }
               {
                 id = "SystemMonitor";
+                compactMode = false;
+                diskPath = "/";
+                showCpuTemp = false;
+                showCpuUsage = false;
+                showDiskUsage = true;
+                showGpuTemp = false;
+                showMemoryAsPercent = false;
+                showMemoryUsage = true;
+                showNetworkStats = true;
               }
               {
                 id = "ActiveWindow";
@@ -337,6 +346,11 @@ in {
           normalUrgencyDuration = 8;
           criticalUrgencyDuration = 15;
           enableKeyboardLayoutToast = true;
+          saveToHistory = {
+            critical = true;
+            low = true;
+            normal = true;
+          };
           sounds = {
             enabled = false;
             volume = 0.5;
