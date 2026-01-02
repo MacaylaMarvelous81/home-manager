@@ -87,6 +87,6 @@
   usermod.home-manager = {
     enable = true;
     sources = import ./npins;
-    configLocation = "${ config.home.homeDirectory }/.config/home-manager/machines/mbp2012/home.nix";
+    configLocation = "${ config.xdg.configHome }/home-manager/machines/mbp2012/home.nix";
   };
 }
