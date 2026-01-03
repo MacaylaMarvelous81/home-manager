@@ -15,7 +15,6 @@ in {
           trust = "ultimate";
         }
       ];
-      scdaemonSettings.disable-ccid = true;
     };
 
     services.gpg-agent = {
