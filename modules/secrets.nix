@@ -10,7 +10,7 @@ in {
     # Using sops-nix for secrets management avoids having the secrets exposed
     # in the nix store
     sops = {
-      defaultSopsFile = ../../home-manager-private/secrets.yaml;
+      defaultSopsFile = ../home-manager-private/secrets.yaml;
 
       gnupg = {
         home = "~/.gnupg";
