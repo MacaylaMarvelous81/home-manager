@@ -60,9 +60,6 @@ in {
           "Mod+Escape".action = toggle-keyboard-shortcuts-inhibit;
           "Mod+Escape".allow-inhibiting = false;
 
-          "Mod+E".action = spawn "${ pkgs.nautilus }/bin/nautilus" "--new-window";
-          "Mod+Z".action = spawn "${ config.programs.neovide.package }/bin/neovide";
-
           "Mod+Space".action = spawn "${ config.programs.noctalia-shell.package }/bin/noctalia-shell" "ipc" "call" "launcher" "toggle";
           "Mod+L".action = spawn "${ config.programs.noctalia-shell.package }/bin/noctalia-shell" "ipc" "call" "lockScreen" "lock";
 

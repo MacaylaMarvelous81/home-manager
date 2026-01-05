@@ -73,5 +73,13 @@ in {
         };
       };
     };
+
+    programs.niri = lib.mkIf config.usermod.niri.enable {
+      settings = with config.lib.niri.actions; {
+        binds = {
+          "Mod+B".action = spawn "${ config.programs.firefox.package }/bin/firefox";
+        };
+      };
+    };
   };
 }

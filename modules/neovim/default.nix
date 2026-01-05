@@ -55,5 +55,13 @@ in {
         neovim-bin = "${ patched-neovim }/bin/nvim";
       };
     };
+
+    programs.niri = lib.mkIf config.usermod.niri.enable {
+      settings = with config.lib.niri.actions; {
+        binds = {
+          "Mod+Z".action = spawn "${ config.programs.neovide.package }/bin/neovide";
+        };
+      };
+    };
   };
 }
