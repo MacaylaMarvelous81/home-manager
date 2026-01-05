@@ -77,6 +77,8 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    fonts.fontconfig.enable = true;
+
     stylix = {
       enable = true;
 
@@ -94,6 +96,15 @@ in {
         package = pkgs.papirus-icon-theme;
         light = "Papirus-Light";
         dark = "Papirus-Dark";
+      };
+
+      fonts = {
+        sansSerif = {
+          # package = pkgs.lato;
+          # name = "Lato";
+          package = pkgs.cantarell-fonts;
+          name = "Cantarell";
+        };
       };
 
       opacity.terminal = 0.8;
