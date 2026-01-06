@@ -11,5 +11,7 @@ return {
   { import = "astrocommunity.pack.typst" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.nix" },
+
+  { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
   -- import/override with your plugins folder
 }

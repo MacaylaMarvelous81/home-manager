@@ -11,14 +11,21 @@ let
         --prefix PATH : ${ with pkgs; lib.makeBinPath [
           # AstroNvim
           ripgrep
-          # Mason core
-          unzip wget
           # For some reason, despite withPython3, python3 is not in the PATH like Node is
-          pkgs.python3
+          python3
+          # Lua
+          lua-language-server stylua selene
+          # Typescript
+          vtsls
+          # Typst
+          tinymist
+          # Python
+          basedpyright black isort
           # Nix
           nixd deadnix statix
           # Rust
-          rust-analyzer ] }
+          rust-analyzer
+      ] }
     '';
   });
 in {
