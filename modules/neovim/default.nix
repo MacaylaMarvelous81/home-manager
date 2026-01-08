@@ -8,7 +8,7 @@ let
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/nvim \
-        --prefix PATH : ${ with pkgs; lib.makeBinPath [
+        --prefix PATH : ${ with pkgs; lib.makeBinPath ([
           # AstroNvim
           ripgrep
           # For some reason, despite withPython3, python3 is not in the PATH like Node is
@@ -20,12 +20,13 @@ let
           # Typst
           tinymist
           # Python
-          basedpyright black isort
+          black isort
           # Nix
           nixd deadnix statix
           # Rust
           rust-analyzer
-      ] }
+      # clang_20 currently fails to build on darwin, which is a transitive dependency of basedpyright
+      ] ++ lib.optionals (!pkgs.stdenv.hostPlatform.isDarwin) [ basedpyright ]) }
     '';
   });
 in {
