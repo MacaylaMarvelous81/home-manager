@@ -86,6 +86,19 @@
       "revision": "a4406d9799d002c41296c72378a1094a8fc9aa1b",
       "url": "https://github.com/nix-community/stylix/archive/a4406d9799d002c41296c72378a1094a8fc9aa1b.tar.gz",
       "hash": "sha256-zsgfockkvK0JrSvzVAb8JeUq3SDdITu6ViUf7yeIpi4="
+    },
+    "wrappers": {
+      "type": "Git",
+      "repository": {
+        "type": "GitHub",
+        "owner": "BirdeeHub",
+        "repo": "nix-wrapper-modules"
+      },
+      "branch": "main",
+      "submodules": false,
+      "revision": "b85202cf7822e358bb57aae56b6f51118947b24c",
+      "url": "https://github.com/BirdeeHub/nix-wrapper-modules/archive/b85202cf7822e358bb57aae56b6f51118947b24c.tar.gz",
+      "hash": "sha256-s1DO1UWP8Iilz/4ddXY+ElgQO5d4g5SDWZ9eIPUY/AY="
     }
   },
   "version": 7

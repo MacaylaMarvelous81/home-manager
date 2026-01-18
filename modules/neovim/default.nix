@@ -1,73 +1,29 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, wrappers, wrappedModules, ... }:
 let
   cfg = config.usermod.neovim;
-  neovim = pkgs.neovim.override { withNodeJs = true; };
-  patched-neovim = (pkgs.symlinkJoin {
-    inherit (neovim) pname version meta;
-    paths = [ neovim ];
-    nativeBuildInputs = [ pkgs.makeWrapper ];
-    postBuild = ''
-      wrapProgram $out/bin/nvim \
-        --prefix PATH : ${ with pkgs; lib.makeBinPath ([
-          # AstroNvim
-          ripgrep
-          # For some reason, despite withPython3, python3 is not in the PATH like Node is
-          python3
-          # Lua
-          lua-language-server stylua selene
-          # Typescript
-          vtsls
-          # Typst
-          tinymist
-          # Python
-          black isort
-          # Nix
-          nixd deadnix statix
-          # Rust
-          rust-analyzer
-      # clang_20 currently fails to build on darwin, which is a transitive dependency of basedpyright
-      ] ++ lib.optionals (!pkgs.stdenv.hostPlatform.isDarwin) [ basedpyright ]) }
-    '';
-  });
+  neovim = wrappedModules.neovim.wrap { inherit pkgs; };
 in {
   options.usermod.neovim = {
     enable = lib.mkEnableOption "management of user neovim settings";
   };
 
   config = lib.mkIf cfg.enable {
-    home.packages = [ patched-neovim ];
-
-    xdg.configFile = {
-      "nvim/.luarc.json".source = ./config/.luarc.json;
-      "nvim/.neoconf.json".source = ./config/.neoconf.json;
-      "nvim/.stylua.toml".source = ./config/.stylua.toml;
-      "nvim/init.lua".source = ./config/init.lua;
-      "nvim/lua".source = ./config/lua;
-      "nvim/lazy-lock.fixed.json" = {
-        source = ./config/lazy-lock.fixed.json;
-        onChange = ''
-        install -m 0644 ${ ./config/lazy-lock.fixed.json } ${ config.xdg.configHome }/nvim/lazy-lock.json
-        '';
-      };
-      "nvim/neovim.yml".source = ./config/neovim.yml;
-      "nvim/selene.toml".source = ./config/selene.toml;
-    };
+    home.packages = [
+      neovim
+      (wrappedModules.neovide.wrap {
+        inherit pkgs;
+        neovim-bin = "${ neovim }/bin/nvim";
+      })
+    ];
 
     home.sessionVariables = {
-      EDITOR = "${ patched-neovim }/bin/nvim";
-    };
-
-    programs.neovide = {
-      enable = true;
-      settings = {
-        neovim-bin = "${ patched-neovim }/bin/nvim";
-      };
+      EDITOR = "${ neovim }/bin/nvim";
     };
 
     programs.niri = lib.mkIf config.usermod.niri.enable {
       settings = with config.lib.niri.actions; {
         binds = {
-          "Mod+Z".action = spawn "${ config.programs.neovide.package }/bin/neovide";
+          "Mod+Z".action = spawn "${ wrappers.neovim.package }/bin/neovide";
         };
       };
     };

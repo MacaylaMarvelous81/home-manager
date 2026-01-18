@@ -1,7 +1,21 @@
-{ sources }: { ... }:
+{ sources }: { pkgs, lib, ... }:
 let
   niri-flake = (import sources.flake-compat) { src = sources.niri-flake; };
 in {
+  _module.args =
+    let
+      wrappers = import sources.wrappers {
+        inherit pkgs;
+        nixpkgs = sources.nixpkgs;
+      };
+    in {
+      inherit wrappers;
+      wrappedModules = import ./wrapperModules {
+        inherit lib;
+        wlib = wrappers.lib;
+      };
+    };
+
   imports = [
     niri-flake.outputs.homeModules.niri
     niri-flake.outputs.homeModules.stylix
