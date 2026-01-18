@@ -7,6 +7,10 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    home.shellAliases = {
+      noctalia-diff = "${ pkgs.diffutils }/bin/diff -u <(${ pkgs.jq }/bin/jq -S . ${ config.xdg.configHome }/noctalia/settings.json) <(${ pkgs.wl-clipboard }/bin/wl-paste | ${ pkgs.jq }/bin/jq -S .)";
+    };
+
     programs.noctalia-shell = {
       enable = true;
       systemd.enable = true;
@@ -106,6 +110,7 @@ in {
           shadowOffsetY = 3;
           language = "";
           allowPanelsOnScreenWithoutBar = true;
+          telemetryEnabled = false;
         };
         ui = {
           # fontDefault = "Sans Serif";
