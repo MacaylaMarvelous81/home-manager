@@ -105,6 +105,10 @@ in {
           package = pkgs.cantarell-fonts;
           name = "Cantarell";
         };
+        monospace = {
+          package = pkgs.nerd-fonts.fira-code;
+          name = "FiraCode Nerd Font";
+        };
       };
 
       opacity.terminal = 0.8;
