@@ -1,19 +1,25 @@
 { config, pkgs, lib, wlib, ... }:
+let
+  tomlFmt = pkgs.formats.toml {};
+in
 {
   imports = [ wlib.modules.default ];
 
   options = {
-    neovim-bin = lib.mkOption {
-      type = lib.types.str;
-      default = "${ pkgs.neovim }/bin/nvim";
-      description = "Neovim binary to invoke headlessly";
+    settings = lib.mkOption {
+      type = tomlFmt.type;
+      default = {};
+      description = ''
+        Configuration of neovide via config file.
+        See <https://neovide.dev/config-file.html>
+      '';
     };
   };
 
   config = {
     package = lib.mkDefault pkgs.neovide;
-    flags = {
-      "--neovim-bin" = config.neovim-bin;
+    env = {
+      NEOVIDE_CONFIG = tomlFmt.generate "config.toml" config.settings;
     };
   };
 }
