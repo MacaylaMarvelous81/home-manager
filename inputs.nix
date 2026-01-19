@@ -13,6 +13,7 @@ in {
         inherit pkgs lib;
         wlib = wrappers.lib;
       };
+      macaylamarvelous81-pkgs = import sources.macaylamarvelous81-pkgs { inherit pkgs lib; };
     };
 
   imports = [
