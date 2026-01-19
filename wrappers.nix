@@ -6,7 +6,13 @@
 let
   wrappedModules = import ./wrapperModules { inherit lib wlib; };
 in rec {
-  neovim = wrappedModules.neovim.wrap { inherit pkgs; };
+  atool = wrappedModules.atool.wrap {
+    inherit pkgs;
+    tools.paths = {
+      rar = "${ pkgs.rar }/bin/rar";
+      unrar = "${ pkgs.unrar }/bin/unrar";
+    };
+  };
   neovide = wrappedModules.neovide.wrap {
     inherit pkgs;
     settings = {
@@ -18,4 +24,5 @@ in rec {
       };
     };
   };
+  neovim = wrappedModules.neovim.wrap { inherit pkgs; };
 }
