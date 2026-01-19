@@ -9,8 +9,8 @@ in {
         nixpkgs = sources.nixpkgs;
       };
     in {
-      wrappedModules = import ./wrapperModules {
-        inherit lib;
+      wrappers = import ./wrappers.nix {
+        inherit pkgs lib;
         wlib = wrappers.lib;
       };
     };
