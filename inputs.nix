@@ -9,10 +9,11 @@ in {
         nixpkgs = sources.nixpkgs;
       };
     in {
-      wrappedModules = import ./wrapperModules {
-        inherit lib;
+      wrappers = import ./wrappers {
+        inherit pkgs lib;
         wlib = wrappers.lib;
       };
+      macaylamarvelous81-pkgs = import sources.macaylamarvelous81-pkgs { inherit pkgs; };
     };
 
   imports = [

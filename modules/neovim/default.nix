@@ -1,18 +1,6 @@
-{ config, pkgs, lib, wrappedModules, ... }:
+{ config, lib, wrappers, ... }:
 let
   cfg = config.usermod.neovim;
-  neovim = wrappedModules.neovim.wrap { inherit pkgs; };
-  neovide = wrappedModules.neovide.wrap {
-    inherit pkgs;
-    settings = {
-      neovim-bin = "${ neovim }/bin/nvim";
-
-      font = {
-        normal = config.stylix.fonts.monospace.name;
-        size = config.stylix.fonts.sizes.terminal;
-      };
-    };
-  };
 in {
   options.usermod.neovim = {
     enable = lib.mkEnableOption "management of user neovim settings";
@@ -20,18 +8,18 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = [
-      neovim
-      neovide
+      wrappers.neovim
+      wrappers.neovide
     ];
 
     home.sessionVariables = {
-      EDITOR = "${ neovim }/bin/nvim";
+      EDITOR = "${ wrappers.neovim }/bin/nvim";
     };
 
     programs.niri = lib.mkIf config.usermod.niri.enable {
       settings = with config.lib.niri.actions; {
         binds = {
-          "Mod+Z".action = spawn "${ neovide }/bin/neovide";
+          "Mod+Z".action = spawn "${ wrappers.neovide }/bin/neovide";
         };
       };
     };
