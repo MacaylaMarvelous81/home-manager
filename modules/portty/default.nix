@@ -12,7 +12,27 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    systemd.user.packages = [ macaylamarvelous81-pkgs.portty ];
+    # No clear way to enable the service with this option, so it is commented out.
+    # systemd.user.packages = [ macaylamarvelous81-pkgs.portty ];
+
+    # the portty daemon is responsible for acquiring the D-Bus name, not
+    # the systemd unit, so it is not automatically started by xdg-desktop-portal
+    systemd.user.services.portty = {
+      Unit = {
+        Description = "Portty - XDG Desktop Portal for TTY";
+        PartOf = [ "graphical-session.target" ];
+        After = [ "graphical-session.target" ];
+      };
+      Service = {
+        Type = "simple";
+        ExecStart = "${ macaylamarvelous81-pkgs.portty }/libexec/porttyd";
+        Restart = "on-failure";
+        RestartSec = 5;
+      };
+      Install = {
+        WantedBy = [ "graphical-session.target" ];
+      };
+    };
 
     xdg.portal = {
       config.niri = lib.mkIf config.usermod.niri.enable {
