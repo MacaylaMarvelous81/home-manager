@@ -9,10 +9,7 @@ in {
         nixpkgs = sources.nixpkgs;
       };
     in {
-      wrappers = import ./wrappers.nix {
-        inherit pkgs lib;
-        wlib = wrappers.lib;
-      };
+      wrappers = import ./wrappers.nix { inherit pkgs lib wrappers; };
       macaylamarvelous81-pkgs = import sources.macaylamarvelous81-pkgs { inherit pkgs lib; };
     };
 

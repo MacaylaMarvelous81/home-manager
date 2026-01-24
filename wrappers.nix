@@ -1,12 +1,15 @@
 {
   pkgs ? import <nixpkgs> {},
   lib ? pkgs.lib,
-  wlib ? (import (fetchTarball "https://github.com/BirdeeHub/nix-wrapper-modules/archive/b85202cf7822e358bb57aae56b6f51118947b24c.tar.gz") { inherit pkgs; }).lib,
+  wrappers ? (import (fetchTarball "https://github.com/BirdeeHub/nix-wrapper-modules/archive/9a9f10119294b22de06f62b38cf7c41f12adbdc6.tar.gz") { inherit pkgs; }),
 }:
 let
-  wrappedModules = import ./wrapperModules { inherit lib wlib; };
+  wrappedModules = import ./wrapperModules {
+    inherit lib;
+    wlib = wrappers.lib;
+  };
 in rec {
-  atool = wrappedModules.atool.wrap {
+  atool = wrappers.wrappedModules.atool.wrap {
     inherit pkgs;
     tools.paths = {
       rar = "${ pkgs.rar }/bin/rar";

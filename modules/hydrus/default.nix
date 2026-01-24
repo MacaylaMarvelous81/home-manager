@@ -2,7 +2,7 @@
 let
   cfg = config.usermod.hydrus;
   hydrus = pkgs.hydrus.overrideAttrs (finalAttrs: previousAttrs: {
-    version = "653";
+    version = "655";
 
     src = pkgs.fetchFromGitHub {
       owner = "hydrusnetwork";
