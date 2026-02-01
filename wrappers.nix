@@ -34,4 +34,9 @@ in rec {
 
     config = { inherit pkgs; };
   });
+  rider = wrappers.lib.evalPackage({ ... }: {
+    imports = [ wrapperModules.rider ];
+
+    config = { inherit pkgs; };
+  });
 }
