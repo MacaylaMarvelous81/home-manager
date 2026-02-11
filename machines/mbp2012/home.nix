@@ -78,10 +78,10 @@
   home.sessionPath = [ "$HOME/bin" "$HOME/.local/bin" ];
 
   usermod.gpg.enable = true;
-  usermod.neovim.enable = true;
   usermod.git.enable = true;
   usermod.shell.enable = true;
   usermod.ssh.enable = true;
+  usermod.zed-editor.enable = true;
   usermod.home-manager = {
     enable = true;
     sources = import ./npins;
