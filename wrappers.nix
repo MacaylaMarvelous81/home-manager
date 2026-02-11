@@ -5,7 +5,7 @@
 }:
 let
   wrapperModules = import ./wrapperModules { inherit lib; };
-in rec {
+in {
   atool = wrappers.wrappers.atool.wrap {
     inherit pkgs;
     tools.paths = {
@@ -13,27 +13,6 @@ in rec {
       unrar = "${ pkgs.unrar }/bin/unrar";
     };
   };
-  neovide = wrappers.lib.evalPackage ({ ... }: {
-    imports = [ wrapperModules.neovide ];
-
-    config = {
-      inherit pkgs;
-
-      settings = {
-        neovim-bin = "${ neovim }/bin/nvim";
-
-        font = {
-          normal = "FiraCode Nerd Font";
-          size = 12;
-        };
-      };
-    };
-  });
-  neovim = wrappers.lib.evalPackage ({ ... }: {
-    imports =  [ wrapperModules.neovim ];
-
-    config = { inherit pkgs; };
-  });
   rider = wrappers.lib.evalPackage({ ... }: {
     imports = [ wrapperModules.rider ];
 
