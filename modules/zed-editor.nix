@@ -30,18 +30,20 @@ in {
           diagnostics = false;
           metrics = false;
         };
-        icon_theme = {
-          mode = "system";
-          light = "Zed (Default)";
-          dark = "Zed (Default)";
-        };
-        theme = {
-          mode = "system";
-          light = "One Light";
-          dark = "One Dark";
-        };
         languages.Nix.language_servers = [ "nixd" "!nil" ];
         lsp.tinymist.initialization_options.preview.background.enabled = true;
+      };
+    };
+
+    programs.niri = lib.mkIf config.usermod.niri.enable {
+      settings = with config.lib.niri.actions; {
+        binds = {
+          # zeditor from the PATH is used because the home-manager module's wrapped package is
+          # installed directly with home.packages, and thus the derivation is not easily accessible
+          # through an attribute like config.programs.zed-editor.package which contains the unwrapped
+          # package instead
+          "Mod+Z".action = spawn "zeditor";
+        };
       };
     };
   };
