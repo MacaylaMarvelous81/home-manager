@@ -23,7 +23,7 @@ in {
         '';
       });
       extensions = [ "nix" "typst" ];
-      extraPackages = with pkgs; [ nixd tinymist ];
+      extraPackages = with pkgs; [ nixd nixfmt tinymist ];
       userSettings = {
         disable_ai = true;
         telemetry = {
