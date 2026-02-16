@@ -1,19 +1,9 @@
 { config, pkgs, lib, ... }:
 let
   cfg = config.usermod.hydrus;
-  hydrus = pkgs.hydrus.overrideAttrs (finalAttrs: previousAttrs: {
-    version = "655";
-
-    src = pkgs.fetchFromGitHub {
-      owner = "hydrusnetwork";
-      repo = "hydrus";
-      tag = "v${ finalAttrs.version }";
-      hash = "sha256-OH07OvN5EaEsjlUHUJMqproiVcN75yL9u7lnCjXSITo=";
-    };
-  });
   hydrus-wrapped = pkgs.symlinkJoin {
-    inherit (hydrus) pname version meta;
-    paths = [ hydrus ];
+    inherit (pkgs.hydrus) pname version meta;
+    paths = [ pkgs.hydrus ];
     nativeBuildInputs = [ pkgs.makeWrapper ];
     postBuild = ''
       wrapProgram $out/bin/hydrus-client \
