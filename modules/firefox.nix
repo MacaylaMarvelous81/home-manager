@@ -1,7 +1,8 @@
 { config, lib, ... }:
 let
   cfg = config.usermod.firefox;
-in {
+in
+{
   options.usermod.firefox = {
     enable = lib.mkEnableOption "managment of firefox user config";
   };
@@ -77,7 +78,7 @@ in {
     programs.niri = lib.mkIf config.usermod.niri.enable {
       settings = with config.lib.niri.actions; {
         binds = {
-          "Mod+B".action = spawn "${ config.programs.firefox.package }/bin/firefox";
+          "Mod+B".action = spawn "${config.programs.firefox.finalPackage}/bin/firefox";
         };
       };
     };
