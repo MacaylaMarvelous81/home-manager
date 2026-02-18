@@ -22,9 +22,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "6cee0821577643e0b34e2c5d9a90d0b1b5cdca70",
-      "url": "https://github.com/nix-community/home-manager/archive/6cee0821577643e0b34e2c5d9a90d0b1b5cdca70.tar.gz",
-      "hash": "sha256-cyxgVsNfHnJ4Zn6G1EOzfTXbjTy7Ds9zMOsZaX7VZWs="
+      "revision": "b3ccd4bb262f4e6d3248b46cede92b90c4a42094",
+      "url": "https://github.com/nix-community/home-manager/archive/b3ccd4bb262f4e6d3248b46cede92b90c4a42094.tar.gz",
+      "hash": "sha256-xK5kl3OBZaF1VwziVMX+SZ2LT9Fbu5o8vRDt78uR7no="
     },
     "macaylamarvelous81-pkgs": {
       "type": "Git",
@@ -48,15 +48,15 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "652dbeb0ac2c481dee5b57be972c6fd6feb38adc",
-      "url": "https://github.com/sodiboo/niri-flake/archive/652dbeb0ac2c481dee5b57be972c6fd6feb38adc.tar.gz",
-      "hash": "sha256-TsOt49sYfzmxSTj2wKHKK2ZToCByLJLxPbwbu1brDt0="
+      "revision": "480118b7c3c01ae99be390bafd0050d9d0726b9f",
+      "url": "https://github.com/sodiboo/niri-flake/archive/480118b7c3c01ae99be390bafd0050d9d0726b9f.tar.gz",
+      "hash": "sha256-0vp2Se/SEnQ2EOIyeHkbfDwrcBBRwSQ779KHJY05CmE="
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre941499.ae67888ff7ef/nixexprs.tar.xz",
-      "hash": "sha256-mjLMjTxcEL89npbCV8UrjFbCqIX1Y961btoVoaLNuho="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre946843.ac055f38c798/nixexprs.tar.xz",
+      "hash": "sha256-erxy9meNKMaKpKQpl8KfhZsVY4EtR4eaHT94jY98Ty0="
     },
     "noctalia-shell": {
       "type": "GitRelease",
@@ -69,10 +69,10 @@
       "version_upper_bound": null,
       "release_prefix": "v",
       "submodules": false,
-      "version": "v4.4.0",
-      "revision": "55e9b3735d78aef8fdab49d3d3d7d31d81628b49",
-      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.4.0",
-      "hash": "sha256-znMQB8MzaWc6XnKe77+Pb/JgLI0LZmuSaZ3sijW6D1w="
+      "version": "v4.5.0",
+      "revision": "dbfe3634df0c57faf9772cecae1f2e92bd04de66",
+      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.5.0",
+      "hash": "sha256-Y5P0RYO9NKxa4UZBoGmmxtz3mEwJrBOfvdLJRGjV2Os="
     },
     "sops-nix": {
       "type": "Git",
@@ -83,9 +83,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "17eea6f3816ba6568b8c81db8a4e6ca438b30b7c",
-      "url": "https://github.com/Mic92/sops-nix/archive/17eea6f3816ba6568b8c81db8a4e6ca438b30b7c.tar.gz",
-      "hash": "sha256-ktjWTq+D5MTXQcL9N6cDZXUf9kX8JBLLBLT0ZyOTSYY="
+      "revision": "2d0cf89b4404529778bc82de7e42b5754e0fe4fa",
+      "url": "https://github.com/Mic92/sops-nix/archive/2d0cf89b4404529778bc82de7e42b5754e0fe4fa.tar.gz",
+      "hash": "sha256-UFc4lfGBr+wJmwgDGJDn1cVD6DTr0/8TdronNUiyXlU="
     },
     "stylix": {
       "type": "Git",
@@ -96,9 +96,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "05c798e0074296df9bfc6ef3df0e936b878b835a",
-      "url": "https://github.com/nix-community/stylix/archive/05c798e0074296df9bfc6ef3df0e936b878b835a.tar.gz",
-      "hash": "sha256-NB9j2JsIcSPcY7FzzoIqJA04p4xSdJpgyLAwzzzncpc="
+      "revision": "801843d10e9e22d7a00f660d069e2de70aa2980a",
+      "url": "https://github.com/nix-community/stylix/archive/801843d10e9e22d7a00f660d069e2de70aa2980a.tar.gz",
+      "hash": "sha256-rTzo6bZEsdT7yHUZ0B4BYe32XQZzm8SiWKvWLJnxerE="
     },
     "wrappers": {
       "type": "Git",
@@ -109,9 +109,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "d08f5a660bdd3ff2e8d4514eced625278d67c3eb",
-      "url": "https://github.com/BirdeeHub/nix-wrapper-modules/archive/d08f5a660bdd3ff2e8d4514eced625278d67c3eb.tar.gz",
-      "hash": "sha256-htlvwpj4OjlhlSutgsxx+6wowszlXon0VqQKs7YEiQI="
+      "revision": "8ba8703b62c2cc7e642f58ff03bd14a2f836e07a",
+      "url": "https://github.com/BirdeeHub/nix-wrapper-modules/archive/8ba8703b62c2cc7e642f58ff03bd14a2f836e07a.tar.gz",
+      "hash": "sha256-Ibv5WEXiwr6gIEOajD4QE93TYpXUhEYv1VZV8sdU3IQ="
     }
   },
   "version": 7
