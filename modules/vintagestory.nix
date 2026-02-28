@@ -17,6 +17,6 @@ in
 
     home.packages = with pkgs; [ vintagestory ];
 
-    home.sessionVariables.VINTAGE_STORY = "${pkgs.vintagestory}";
+    home.sessionVariables.VINTAGE_STORY = "${pkgs.vintagestory}/share/vintagestory";
   };
 }
