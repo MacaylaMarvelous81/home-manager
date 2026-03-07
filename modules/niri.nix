@@ -1,7 +1,13 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.usermod.niri;
-in {
+in
+{
   options.usermod.niri = {
     enable = lib.mkEnableOption "management of niri options using niri-flake";
   };
@@ -60,10 +66,10 @@ in {
           "Mod+Escape".action = toggle-keyboard-shortcuts-inhibit;
           "Mod+Escape".allow-inhibiting = false;
 
-          "Mod+Space".action = spawn "${ config.programs.noctalia-shell.package }/bin/noctalia-shell" "ipc" "call" "launcher" "toggle";
-          "Mod+L".action = spawn "${ config.programs.noctalia-shell.package }/bin/noctalia-shell" "ipc" "call" "lockScreen" "lock";
-
-          "Mod+Delete".action = spawn "${ config.programs.noctalia-shell.package }/bin/noctalia-shell" "ipc" "call" "sessionMenu" "toggle";
+          "Mod+Space".action =
+            spawn "${config.programs.rofi.package}/bin/rofi" "-show" "combi" "-modes" "combi" "-combi-modes"
+              "window,drun,run"
+              "toggle";
 
           "Print".action.screenshot = {
             show-pointer = false;
@@ -73,56 +79,56 @@ in {
             show-pointer = false;
           };
 
-          "Alt+Print".action.screenshot-window = {};
+          "Alt+Print".action.screenshot-window = { };
 
           "XF86AudioRaiseVolume" = {
             allow-when-locked = true;
-            action = spawn "${ pkgs.wireplumber }/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01+";
+            action = spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01+";
           };
 
           "XF86AudioLowerVolume" = {
             allow-when-locked = true;
-            action = spawn "${ pkgs.wireplumber }/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01-";
+            action = spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.01-";
           };
 
           "Shift+XF86AudioRaiseVolume" = {
             allow-when-locked = true;
-            action = spawn "${ pkgs.wireplumber }/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+";
+            action = spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1+";
           };
 
           "Shift+XF86AudioLowerVolume" = {
             allow-when-locked = true;
-            action = spawn "${ pkgs.wireplumber }/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-";
+            action = spawn "${pkgs.wireplumber}/bin/wpctl" "set-volume" "@DEFAULT_AUDIO_SINK@" "0.1-";
           };
 
           "XF86AudioMute" = {
             allow-when-locked = true;
-            action = spawn "${ pkgs.wireplumber }/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
+            action = spawn "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SINK@" "toggle";
           };
 
           "XF86AudioMicMute" = {
             allow-when-locked = true;
-            action = spawn "${ pkgs.wireplumber }/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
+            action = spawn "${pkgs.wireplumber}/bin/wpctl" "set-mute" "@DEFAULT_AUDIO_SOURCE@" "toggle";
           };
 
           "XF86MonBrightnessUp" = {
             allow-when-locked = true;
-            action = spawn "${ pkgs.brightnessctl }/bin/brightnessctl" "--class=backlight" "set" "1%+";
+            action = spawn "${pkgs.brightnessctl}/bin/brightnessctl" "--class=backlight" "set" "1%+";
           };
 
           "XF86MonBrightnessDown" = {
             allow-when-locked = true;
-            action = spawn "${ pkgs.brightnessctl }/bin/brightnessctl" "--class=backlight" "set" "1%-";
+            action = spawn "${pkgs.brightnessctl}/bin/brightnessctl" "--class=backlight" "set" "1%-";
           };
 
           "Shift+XF86MonBrightnessUp" = {
             allow-when-locked = true;
-            action = spawn "${ pkgs.brightnessctl }/bin/brightnessctl" "--class=backlight" "set" "10%+";
+            action = spawn "${pkgs.brightnessctl}/bin/brightnessctl" "--class=backlight" "set" "10%+";
           };
 
           "Shift+XF86MonBrightnessDown" = {
             allow-when-locked = true;
-            action = spawn "${ pkgs.brightnessctl }/bin/brightnessctl" "--class=backlight" "set" "10%-";
+            action = spawn "${pkgs.brightnessctl}/bin/brightnessctl" "--class=backlight" "set" "10%-";
           };
         };
 
@@ -144,10 +150,6 @@ in {
           };
 
           focus-follows-mouse.enable = true;
-        };
-
-        switch-events = {
-          lid-close.action = spawn "${ config.programs.noctalia-shell.package }/bin/noctalia-shell" "ipc" "call" "lockScreen" "lock";
         };
 
         window-rules = [
@@ -173,7 +175,7 @@ in {
               relative-to = "bottom-right";
             };
             open-focused = false;
-            baba-is-float= true;
+            baba-is-float = true;
           }
         ];
 
@@ -187,7 +189,7 @@ in {
 
         prefer-no-csd = true;
 
-        xwayland-satellite.path = "${ pkgs.xwayland-satellite }/bin/xwayland-satellite";
+        xwayland-satellite.path = "${pkgs.xwayland-satellite}/bin/xwayland-satellite";
       };
     };
     xdg.portal = lib.mkIf config.xdg.portal.enable {

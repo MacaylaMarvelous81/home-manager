@@ -1,7 +1,8 @@
 { config, lib, ... }:
 let
   cfg = config.usermod.term;
-in {
+in
+{
   options.usermod.term = {
     enable = lib.mkEnableOption "management of terminal emulators";
   };
@@ -12,15 +13,12 @@ in {
     programs.foot.enable = true;
 
     usermod.portty = lib.mkIf config.usermod.portty.enable {
-      termProgram = "${ config.programs.foot.package }/bin/foot -e";
-    };
-    programs.noctalia-shell = lib.mkIf config.usermod.noctalia-shell.enable {
-      settings.appLauncher.terminalCommand = "${ config.programs.foot.package }/bin/foot -e";
+      termProgram = "${config.programs.foot.package}/bin/foot -e";
     };
     programs.niri = lib.mkIf config.usermod.niri.enable {
       settings = with config.lib.niri.actions; {
         binds = {
-          "Mod+T".action = spawn "${ config.programs.foot.package }/bin/foot";
+          "Mod+T".action = spawn "${config.programs.foot.package}/bin/foot";
         };
       };
     };
