@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.usermod.hydrus;
   hydrus-wrapped = pkgs.symlinkJoin {
@@ -8,10 +13,11 @@ let
     postBuild = ''
       wrapProgram $out/bin/hydrus-client \
         --unset WAYLAND_DISPLAY \
-        --add-flag '-d=${ config.home.homeDirectory }/${ cfg.dbDir }'
+        --add-flag '-d=${config.home.homeDirectory}/${cfg.dbDir}'
     '';
   };
-in {
+in
+{
   options.usermod.hydrus = {
     enable = lib.mkEnableOption "hydrus network configuration";
     dbDir = lib.mkOption {
@@ -24,13 +30,15 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = [ hydrus-wrapped ];
 
-    home.file = {
+    home.file = lib.mkIf config.stylix.enable {
       # to apply this stylesheet, set the Qt stylesheet option under
       # style in the client options
-      "${ cfg.dbDir }/static/qss/user.qss".source = lib.mkIf config.stylix.enable (config.lib.stylix.colors {
-        template = ./user.qss.mustache;
-        extension = ".qss";
-      });
+      "${cfg.dbDir}/static/qss/user.qss".source = (
+        config.lib.stylix.colors {
+          template = ./user.qss.mustache;
+          extension = ".qss";
+        }
+      );
     };
   };
 }
