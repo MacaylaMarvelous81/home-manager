@@ -66,11 +66,6 @@ in
           "Mod+Escape".action = toggle-keyboard-shortcuts-inhibit;
           "Mod+Escape".allow-inhibiting = false;
 
-          "Mod+Space".action =
-            spawn "${config.programs.rofi.package}/bin/rofi" "-show" "combi" "-modes" "combi" "-combi-modes"
-              "window,drun,run"
-              "toggle";
-
           "Print".action.screenshot = {
             show-pointer = false;
           };
