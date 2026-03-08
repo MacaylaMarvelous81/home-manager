@@ -22,9 +22,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "f3a30376bb9eb2f6f61816be7d6ed954b6d2a3b9",
-      "url": "https://github.com/nix-community/home-manager/archive/f3a30376bb9eb2f6f61816be7d6ed954b6d2a3b9.tar.gz",
-      "hash": "sha256-G8nArvOTZXU8DRvrzAdz3Elcj6kA/vMtvY9mrGLATtA="
+      "revision": "5be5d8245cbc7bc0c09fbb5f38f23f223c543f85",
+      "url": "https://github.com/nix-community/home-manager/archive/5be5d8245cbc7bc0c09fbb5f38f23f223c543f85.tar.gz",
+      "hash": "sha256-wEEmvfqJcl9J0wyMgMrj1TixOgInBW/6tLPhWGoZE3s="
     },
     "macaylamarvelous81-pkgs": {
       "type": "Git",
@@ -48,31 +48,15 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "599b3f8d4215470dd50066119c81007b2670b6e1",
-      "url": "https://github.com/sodiboo/niri-flake/archive/599b3f8d4215470dd50066119c81007b2670b6e1.tar.gz",
-      "hash": "sha256-BdXKcWd1LE+APzyaJ/xszDXcA5KKPenjNyC5VOd3x4E="
+      "revision": "3fc5b3670ef77356173ca5f1fa5015e01204bc33",
+      "url": "https://github.com/sodiboo/niri-flake/archive/3fc5b3670ef77356173ca5f1fa5015e01204bc33.tar.gz",
+      "hash": "sha256-nl1U1E9Kk9ZmxWdqcwBuFaljxknbrwq8/bY+utQSajk="
     },
     "nixpkgs": {
       "type": "Channel",
       "name": "nixpkgs-unstable",
-      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre955350.c0f3d81a7ddb/nixexprs.tar.xz",
-      "hash": "sha256-BHKMR414WpfUddNyUtx2GR1VPl0R9sWGQs/opgYm9rc="
-    },
-    "noctalia-shell": {
-      "type": "GitRelease",
-      "repository": {
-        "type": "GitHub",
-        "owner": "noctalia-dev",
-        "repo": "noctalia-shell"
-      },
-      "pre_releases": false,
-      "version_upper_bound": null,
-      "release_prefix": "v",
-      "submodules": false,
-      "version": "v4.5.0",
-      "revision": "dbfe3634df0c57faf9772cecae1f2e92bd04de66",
-      "url": "https://api.github.com/repos/noctalia-dev/noctalia-shell/tarball/refs/tags/v4.5.0",
-      "hash": "sha256-Y5P0RYO9NKxa4UZBoGmmxtz3mEwJrBOfvdLJRGjV2Os="
+      "url": "https://releases.nixos.org/nixpkgs/nixpkgs-26.05pre958959.e38213b91d37/nixexprs.tar.xz",
+      "hash": "sha256-SDEGkbscgwFhxzfvNdDNcvsA82gAQcyOh0/BZOb6fWg="
     },
     "sops-nix": {
       "type": "Git",
@@ -83,9 +67,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "334daa7c273dd8bf7a0cd370e4e16022b64e55e9",
-      "url": "https://github.com/Mic92/sops-nix/archive/334daa7c273dd8bf7a0cd370e4e16022b64e55e9.tar.gz",
-      "hash": "sha256-/wA0OaH6kZ/pFA+nXR/tvg5oupOmEDmMS5us79JT60o="
+      "revision": "c8e69670b316d6788e435a3aa0bda74eb1b82cc0",
+      "url": "https://github.com/Mic92/sops-nix/archive/c8e69670b316d6788e435a3aa0bda74eb1b82cc0.tar.gz",
+      "hash": "sha256-xTzsSd3r5HBeufSZ3fszAn0ldfKctvsYG7tT2YJg5gY="
     },
     "stylix": {
       "type": "Git",
@@ -96,9 +80,9 @@
       },
       "branch": "master",
       "submodules": false,
-      "revision": "30054cca073b49b42a71289edec858f535b27fe9",
-      "url": "https://github.com/nix-community/stylix/archive/30054cca073b49b42a71289edec858f535b27fe9.tar.gz",
-      "hash": "sha256-Vg4bGwwenNYI8p3nJTl9FRyeIyrjATeZrZr+GyUSDrw="
+      "revision": "c4b8e80a1020e09a1f081ad0f98ce804a6e85acf",
+      "url": "https://github.com/nix-community/stylix/archive/c4b8e80a1020e09a1f081ad0f98ce804a6e85acf.tar.gz",
+      "hash": "sha256-pAtzPsgHRKw/2Kv8HgAjSJg450FDldHPWsP3AKG/Xj0="
     },
     "wrappers": {
       "type": "Git",
@@ -109,9 +93,9 @@
       },
       "branch": "main",
       "submodules": false,
-      "revision": "0ea455457dac3de9129498f5c50a35153ab56484",
-      "url": "https://github.com/BirdeeHub/nix-wrapper-modules/archive/0ea455457dac3de9129498f5c50a35153ab56484.tar.gz",
-      "hash": "sha256-KNTuqLytdRE0MVhM1hd3IJTlcOG6In/6klbiEDWYOaA="
+      "revision": "40f684d73e8850bc11f80ee3aff70077d35f1c28",
+      "url": "https://github.com/BirdeeHub/nix-wrapper-modules/archive/40f684d73e8850bc11f80ee3aff70077d35f1c28.tar.gz",
+      "hash": "sha256-LLztvQFZpIJhYy00iMjD/l+JE4fpEjaWLKjscqPfdG8="
     }
   },
   "version": 7
