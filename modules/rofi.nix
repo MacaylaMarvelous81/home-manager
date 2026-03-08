@@ -18,10 +18,7 @@ in
     programs.niri = lib.mkIf config.usermod.rofi.enable {
       settings = with config.lib.niri.actions; {
         binds = {
-          "Mod+Space".action =
-            spawn "${config.programs.rofi.package}/bin/rofi" "-show" "combi" "-modes" "combi" "-combi-modes"
-              "window,drun,run"
-              "toggle";
+          "Mod+Space".action = spawn "${config.programs.rofi.package}/bin/rofi" "-show" "drun";
           "Mod+L".action =
             spawn "${config.programs.rofi.package}/bin/rofi" "-show" "power-menu" "-modi"
               "power-menu:${pkgs.rofi-power-menu}/bin/rofi-power-menu";
