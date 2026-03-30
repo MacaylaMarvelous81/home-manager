@@ -1,0 +1,31 @@
+* {
+    font-family: "Ark Pixel 10px P latin";
+    font-size: 10pt;
+}
+
+window#waybar {
+    background-color: rgba(54, 54, 54, 0);
+    background-blend-mode: screen;
+    border-radius: 6pt;
+    color: #fff;
+}
+
+.modules-left,
+.modules-center,
+.modules-right {
+    background: rgba(54, 54, 54, 0.5);
+    background-blend-mode: overlay;
+    margin: 7px 5px;
+    padding: 4px 2px;
+    margin-bottom: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 3px 4px rgba(188, 188, 188, 0.4);
+}
+
+.modules-left {
+    padding: 0;
+}
+
+.modules-center {
+    padding: 0 10px;
+}
