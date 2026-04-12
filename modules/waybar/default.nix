@@ -83,7 +83,6 @@ in
           };
         };
       };
-      style = ./style.css;
     };
   };
 }
