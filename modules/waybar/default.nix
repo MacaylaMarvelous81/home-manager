@@ -70,8 +70,8 @@ in
             format = "<span color=\"#e3b872\">dsk</span> {free}/{total}";
           };
           network = {
-            format = "{icon} {ifname} ({ipaddr})";
-            format-wifi = "{icon} {essid} ({ipaddr})";
+            format = "{ifname} ({ipaddr})";
+            format-wifi = "{essid} ({ipaddr})";
           };
           bluetooth = {
             format = "<span color=\"#66c0f4\">bt</span> {status}";
