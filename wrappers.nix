@@ -18,10 +18,4 @@ in
       unrar = "${pkgs.unrar}/bin/unrar";
     };
   };
-  foot = wrappers.wrappers.foot.wrap {
-    inherit pkgs;
-    settings = {
-      main.font = "monospace:size=10";
-    };
-  };
 }
