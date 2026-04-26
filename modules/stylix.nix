@@ -1,4 +1,9 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.usermod.stylix;
   # new-dragon-scimitair-cursor = pkgs.stdenvNoCC.mkDerivation {
@@ -71,7 +76,8 @@ let
   #     EOF
   #   '';
   # };
-in {
+in
+{
   options.usermod.stylix = {
     enable = lib.mkEnableOption "stylix usage";
   };
@@ -82,7 +88,8 @@ in {
     stylix = {
       enable = true;
 
-      image = "${ ../home-manager-private }/Deathwing - Heroes of the Storm (unpacked)/materials/be94bcb77b47e00d53bc0e7fe44a48c8_1_0_art.jpg";
+      # image = "${ ../home-manager-private }/Deathwing - Heroes of the Storm (unpacked)/materials/be94bcb77b47e00d53bc0e7fe44a48c8_1_0_art.jpg";
+      image = "${../home-manager-private}/2533132599-1-screenshot.png";
       polarity = "dark";
 
       cursor = {

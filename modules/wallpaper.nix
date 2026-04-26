@@ -1,7 +1,13 @@
-{ config, pkgs, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.usermod.wallpaper;
-in {
+in
+{
   options.usermod.wallpaper = {
     enable = lib.mkEnableOption "manage wallpaper layer";
   };
@@ -15,7 +21,8 @@ in {
       };
       Service = {
         Type = "simple";
-        ExecStart = "\"${ pkgs.linux-wallpaperengine }/bin/linux-wallpaperengine\" --assets-dir \"${ ../home-manager-private }/depot_431961_19812784/assets\" --silent --screen-root eDP-1 --bg \"${ ../home-manager-private }/Deathwing - Heroes of the Storm (unpacked)\"";
+        # ExecStart = "\"${ pkgs.linux-wallpaperengine }/bin/linux-wallpaperengine\" --assets-dir \"${ ../home-manager-private }/depot_431961_19812784/assets\" --silent --screen-root eDP-1 --bg \"${ ../home-manager-private }/Deathwing - Heroes of the Storm (unpacked)\"";
+        ExecStart = "\"${pkgs.linux-wallpaperengine}/bin/linux-wallpaperengine\" --assets-dir \"${../home-manager-private}/depot_431961_19812784/assets\" --silent --screen-root eDP-1 --bg \"${../home-manager-private}/2533132599\" --property cultistarcher=0 --property cultistarcher2=0 --property lunaticdevotee=0 --property lunaticdevotee2=0 --property blocks=0 --property stardustdragon1=1 --property shine=1";
         Restart = "on-failure";
       };
       Install = {
