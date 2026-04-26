@@ -10,6 +10,8 @@ in
   config = lib.mkIf cfg.enable {
     programs.firefox = {
       enable = true;
+      # new default value for state version 26.05
+      configPath = "${config.xdg.configHome}/mozilla/firefox";
       profiles = {
         default = {
           settings = lib.mkMerge [
