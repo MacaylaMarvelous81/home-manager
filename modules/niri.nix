@@ -148,6 +148,15 @@ in
           focus-follows-mouse.enable = true;
         };
 
+        layout = {
+          gaps = 8;
+          always-center-single-column = true;
+          border = {
+            width = 2;
+          };
+          shadow.enable = true;
+        };
+
         window-rules = [
           {
             geometry-corner-radius = {
