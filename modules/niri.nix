@@ -42,6 +42,7 @@ in
           "Mod+Alt+Right".action = consume-or-expel-window-right;
 
           "Mod+F".action = maximize-column;
+          "Mod+Ctrl+F".action = maximize-window-to-edges;
           "Mod+Shift+F".action = fullscreen-window;
 
           "Mod+D".action = toggle-window-floating;
