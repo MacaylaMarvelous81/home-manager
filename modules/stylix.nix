@@ -92,6 +92,8 @@ in
       image = "${../home-manager-private}/2533132599-1-screenshot.png";
       polarity = "dark";
 
+      base16Scheme = "${pkgs.base16-schemes}/share/themes/silk-dark.yaml";
+
       cursor = {
         package = pkgs.vanilla-dmz;
         name = "Vanilla-DMZ";
