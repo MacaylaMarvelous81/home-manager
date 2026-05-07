@@ -1,9 +1,12 @@
 { config, ... }:
-{
+let
+  sources = import ./nix/sources.nix;
+in {
   imports = [
     ../../modules
 
-    (import ../../inputs.nix { sources = import ./npins; })
+    (import ../../inputs.nix { inherit sources; })
+    ((import sources.nixvim).homeModules.nixvim)
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -81,10 +84,10 @@
   usermod.git.enable = true;
   usermod.shell.enable = true;
   usermod.ssh.enable = true;
-  usermod.zed-editor.enable = true;
+  usermod.nixvim.enable = true;
   usermod.home-manager = {
+    inherit sources;
     enable = true;
-    sources = import ./npins;
     configLocation = "${ config.xdg.configHome }/home-manager/machines/mbp2012/home.nix";
   };
 }
