@@ -4,3 +4,6 @@
 [submodule "nixvim"]
 	path = nixvim
 	url = git@github.com:MacaylaMarvelous81/nixvim-conf
+[submodule "nix-exprs"]
+	path = nix-exprs
+	url = git@github.com:MacaylaMarvelous81/nix-exprs
