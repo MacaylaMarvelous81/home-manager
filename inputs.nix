@@ -15,7 +15,7 @@ in
     {
       inherit erosanix;
       wrappers = import ./wrappers.nix { inherit pkgs lib wrappers; };
-      macaylamarvelous81-pkgs = import sources.macaylamarvelous81-pkgs { inherit pkgs lib erosanix; };
+      macaylamarvelous81-pkgs = import ./nix-exprs { inherit pkgs lib erosanix; };
     };
 
   imports = [
