@@ -11,7 +11,7 @@ in
   config = lib.mkIf cfg.enable {
     programs.nixvim = {
       enable = true;
-      imports = [ ../nixvim/config ];
+      imports = [ ../nixvi/config ];
     };
 
     programs.neovide = lib.mkIf cfg.neovide {
