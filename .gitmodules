@@ -6,4 +6,4 @@
 	url = git@github.com:MacaylaMarvelous81/nix-exprs
 [submodule "nixvi"]
 	path = nixvi
-	url = git@github.com:danylo-volchenko/nixvi
+	url = git@github.com:MacaylaMarvelous81/nixvi
