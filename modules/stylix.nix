@@ -124,6 +124,8 @@ in
 
       targets.firefox.profileNames = [ "default" ];
       targets.qt.standardDialogs = if config.xdg.portal.enable then "xdgdesktopportal" else "default";
+      targets.nixvim.enable = false;
     };
   };
 }
+

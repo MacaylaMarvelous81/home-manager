@@ -4,6 +4,6 @@
 [submodule "nix-exprs"]
 	path = nix-exprs
 	url = git@github.com:MacaylaMarvelous81/nix-exprs
-[submodule "nixvi"]
-	path = nixvi
-	url = git@github.com:MacaylaMarvelous81/nixvi
+[submodule "nix-flakes-nixvim"]
+	path = nix-flakes-nixvim
+	url = git@github.com:MacaylaMarvelous81/nix-flakes-nixvim
