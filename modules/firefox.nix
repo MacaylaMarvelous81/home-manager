@@ -34,7 +34,6 @@ in
         DisablePocket = true;
         DisableFirefoxAccounts = true;
         DisableAccounts = true;
-        DisableFirefoxScreenshots = true;
         FirefoxSuggest = {
           WebSuggestions = false;
           SponsoredSuggestions = false;
