@@ -23,5 +23,6 @@ in
     niri-flake.outputs.homeModules.stylix
     (import sources.stylix).homeModules.stylix
     "${sources.sops-nix}/modules/home-manager/sops.nix"
+    "${sources.lazyvim-nix}/nix/module.nix"
   ];
 }
