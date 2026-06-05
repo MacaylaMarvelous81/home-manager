@@ -5,10 +5,10 @@
         "homepage": null,
         "owner": "emmanuelrosa",
         "repo": "erosanix",
-        "rev": "81979773b7af17ac6140f45e168911bd378a72fd",
-        "sha256": "0hbks64ckh7a0jhz7ngzk5wl4h1g1aa0wb5yh8xxqm0vyxwxn9yc",
+        "rev": "8a0ac7e5eef4a6670e2389a1158dd06eafb80e30",
+        "sha256": "0pmn1gk597yq5r2fa2ylk6k9bv80c0fdrpl93v301phy65w5h9gn",
         "type": "tarball",
-        "url": "https://github.com/emmanuelrosa/erosanix/archive/81979773b7af17ac6140f45e168911bd378a72fd.tar.gz",
+        "url": "https://github.com/emmanuelrosa/erosanix/archive/8a0ac7e5eef4a6670e2389a1158dd06eafb80e30.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "flake-compat": {
@@ -29,10 +29,10 @@
         "homepage": "https://nix-community.github.io/home-manager/",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "75fac363324f18d2b83a30fd916e509d2a02fb0e",
-        "sha256": "1bvm1vmiripi6zwii3b7g5z5yx4m5q2k39k78s7x4jcrkddxnppd",
+        "rev": "7d8127d308c3fb9664f7e643eec944be74ebb37d",
+        "sha256": "194ndw9hhyhis8scybyf34gplwz956m8brycb4in48dda70hzwkr",
         "type": "tarball",
-        "url": "https://github.com/nix-community/home-manager/archive/75fac363324f18d2b83a30fd916e509d2a02fb0e.tar.gz",
+        "url": "https://github.com/nix-community/home-manager/archive/7d8127d308c3fb9664f7e643eec944be74ebb37d.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "macaylamarvelous81-pkgs": {
@@ -41,10 +41,10 @@
         "homepage": null,
         "owner": "MacaylaMarvelous81",
         "repo": "nix-exprs",
-        "rev": "6a2d1e1d42dbb14c8daf7e5c1164bcf6931b474d",
-        "sha256": "1ww2cpsyz58kdj0ji8r6xp780chdw1jscmppg5j23iyw6g7w9wz0",
+        "rev": "223817ecf2107f2771d9ae11da96e77776c9f002",
+        "sha256": "1c0xrvkvid6dc8kc28v5g304ww2b14s4qczw7ibr32xs0ksw8hk6",
         "type": "tarball",
-        "url": "https://github.com/MacaylaMarvelous81/nix-exprs/archive/6a2d1e1d42dbb14c8daf7e5c1164bcf6931b474d.tar.gz",
+        "url": "https://github.com/MacaylaMarvelous81/nix-exprs/archive/223817ecf2107f2771d9ae11da96e77776c9f002.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "niri-flake": {
@@ -53,10 +53,10 @@
         "homepage": "https://github.com/YaLTeR/niri",
         "owner": "sodiboo",
         "repo": "niri-flake",
-        "rev": "6e900d2d23f32b88a1d97c38d1f24413cce66c90",
-        "sha256": "08g528wvlknjbn95lgsa8by56pdc1asiss82sy6srs167pim3w9k",
+        "rev": "3cb351d73c357a4e413f59c4551d219118791c14",
+        "sha256": "0668g3ppvyv1ljw22p0yxp52jlxfgk848dlwijd8cpqg5nipwwfx",
         "type": "tarball",
-        "url": "https://github.com/sodiboo/niri-flake/archive/6e900d2d23f32b88a1d97c38d1f24413cce66c90.tar.gz",
+        "url": "https://github.com/sodiboo/niri-flake/archive/3cb351d73c357a4e413f59c4551d219118791c14.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixpkgs": {
@@ -65,10 +65,10 @@
         "homepage": null,
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "ed67bc86e84e51d4a88e73c7fd36006dc876476f",
-        "sha256": "08b48di5n159s1g11cf9vfx0nscw02bwf05skfrsrlj8m61icqgb",
+        "rev": "e9a7635a57597d9754eccebdfc7045e6c8600e6b",
+        "sha256": "1515byrd40ylb3z258g4f9mmhn1v608dvmxi8acci8vz4zzr99dv",
         "type": "tarball",
-        "url": "https://github.com/NixOS/nixpkgs/archive/ed67bc86e84e51d4a88e73c7fd36006dc876476f.tar.gz",
+        "url": "https://github.com/NixOS/nixpkgs/archive/e9a7635a57597d9754eccebdfc7045e6c8600e6b.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "nixvim": {
@@ -77,10 +77,10 @@
         "homepage": "https://nix-community.github.io/nixvim",
         "owner": "nix-community",
         "repo": "nixvim",
-        "rev": "7986a276960b4dfaed9bb2c3c438b5ba71ae08f1",
-        "sha256": "06dlvhvi31vaq1lbav3bkwzpxlcgy7kfh2lwcv17ryhm0f126p0c",
+        "rev": "e5c7b40dc569f5c97ba2182d409f0fb54c02d7c1",
+        "sha256": "009ny4672bvar8qfj0f04qyihabx9pp3nidl7912prah28bdad7x",
         "type": "tarball",
-        "url": "https://github.com/nix-community/nixvim/archive/7986a276960b4dfaed9bb2c3c438b5ba71ae08f1.tar.gz",
+        "url": "https://github.com/nix-community/nixvim/archive/e5c7b40dc569f5c97ba2182d409f0fb54c02d7c1.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "sops-nix": {
@@ -101,10 +101,10 @@
         "homepage": "https://nix-community.github.io/stylix/",
         "owner": "nix-community",
         "repo": "stylix",
-        "rev": "18ed8d270231e067fe2739998479ed5d7c659c2c",
-        "sha256": "09b8ga6278gihdv1ri9gjvxzl4x731n810pk3f9n6bhb9nfr4d7w",
+        "rev": "ca07e0644716a7c13e91c6d92d169fc81889c589",
+        "sha256": "0jm1k459pn89d6nd3xqlcihcnmmy6dcg0y3cckqxp2hb7jpq4p2m",
         "type": "tarball",
-        "url": "https://github.com/nix-community/stylix/archive/18ed8d270231e067fe2739998479ed5d7c659c2c.tar.gz",
+        "url": "https://github.com/nix-community/stylix/archive/ca07e0644716a7c13e91c6d92d169fc81889c589.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     },
     "wrappers": {
@@ -113,10 +113,10 @@
         "homepage": "https://birdeehub.github.io/nix-wrapper-modules/",
         "owner": "BirdeeHub",
         "repo": "nix-wrapper-modules",
-        "rev": "dc5184095ad488e937ec308b52c9c0b218959d8b",
-        "sha256": "0dm4f47nck0pg3qh3nmk9nj8hbd5i8z0n2qdzfrxhxxxwphbcd6h",
+        "rev": "168fd6f514a9f8fa47df4fdcf9ecd61db10aec68",
+        "sha256": "0fjv4bpvyhdcl861d3inpj38inhm647za5ma7hpwfbfy7ksgxn2i",
         "type": "tarball",
-        "url": "https://github.com/BirdeeHub/nix-wrapper-modules/archive/dc5184095ad488e937ec308b52c9c0b218959d8b.tar.gz",
+        "url": "https://github.com/BirdeeHub/nix-wrapper-modules/archive/168fd6f514a9f8fa47df4fdcf9ecd61db10aec68.tar.gz",
         "url_template": "https://github.com/<owner>/<repo>/archive/<rev>.tar.gz"
     }
 }
