@@ -1,7 +1,8 @@
 { config, lib, ... }:
 let
   cfg = config.usermod.ssh;
-in {
+in
+{
   options.usermod.ssh = {
     enable = lib.mkEnableOption "manage ssh user conf";
   };
@@ -10,11 +11,9 @@ in {
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
-      matchBlocks = {
-        "*" = {
-          userKnownHostsFile = "~/.ssh/known_hosts";
-          controlPath = "~/.ssh/master-%r@%n:%p";
-        };
+      settings."*" = {
+        UserKnownHostsFile = "~/.ssh/known_hosts";
+        ControlPath = "~/.ssh/master-%r@%n:%p";
       };
     };
   };
