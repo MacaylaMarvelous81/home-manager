@@ -19,7 +19,13 @@ in
               # 0 = never, 1 = always, 2 = automatic
               "widget.use-xdg-desktop-portal.file-picker" = 1;
             })
+            {
+              "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+            }
           ];
+          userContent = ''
+            @import "${ ./. }/clocktower.css"
+          '';
         };
       };
       policies = {
