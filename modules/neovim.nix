@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.usermod.neovim;
 in
@@ -9,7 +14,29 @@ in
   };
 
   config = lib.mkIf cfg.enable {
-    programs.lazyvim.enable = true;
+    programs.lazyvim = {
+      enable = true;
+      extras = {
+        lang.nix = {
+          enable = true;
+          config = ''
+            return {
+              "neovim/nvim-lspconfig",
+              opts = {
+                servers = {
+                  nixd = {},
+                },
+              },
+            }
+          '';
+        };
+      };
+      extraPackages = with pkgs; [
+        nixd
+        nixfmt
+        statix
+      ];
+    };
 
     programs.neovide = lib.mkIf cfg.neovide {
       enable = true;
