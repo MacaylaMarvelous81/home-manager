@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  macaylamarvelous81-pkgs,
   lib,
   ...
 }:
@@ -95,8 +96,10 @@ in
       base16Scheme = "${pkgs.base16-schemes}/share/themes/silk-dark.yaml";
 
       cursor = {
-        package = pkgs.vanilla-dmz;
-        name = "Vanilla-DMZ";
+        # package = pkgs.vanilla-dmz;
+        # name = "Vanilla-DMZ";
+        package = macaylamarvelous81-pkgs.crab-leaf-linux-cursor;
+        name = "Crab_Leaf_Linux_Cursor";
         size = 24;
       };
 
@@ -128,4 +131,3 @@ in
     };
   };
 }
-
