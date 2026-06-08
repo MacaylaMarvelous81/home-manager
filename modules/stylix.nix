@@ -86,6 +86,8 @@ in
   config = lib.mkIf cfg.enable {
     fonts.fontconfig.enable = true;
 
+    usermod.unfree.pkgnames = [ "crab_leaf_linux_cursor_by_nekomarunosuke_dea7q36.tar.gz" ];
+
     stylix = {
       enable = true;
 
