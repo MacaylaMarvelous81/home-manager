@@ -1,4 +1,9 @@
-{ config, lib, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}:
 let
   cfg = config.usermod.firefox;
 in
@@ -14,6 +19,48 @@ in
       configPath = "${config.xdg.configHome}/mozilla/firefox";
       profiles = {
         default = {
+          search = {
+            force = true;
+            default = "mojeek";
+            engines = {
+              nix-packages = {
+                name = "Nix Packages";
+                urls = [
+                  {
+                    template = "https://search.nixos.org/packages";
+                    params = [
+                      {
+                        name = "type";
+                        value = "packages";
+                      }
+                      {
+                        name = "channel";
+                        value = "unstable";
+                      }
+                      {
+                        name = "query";
+                        value = "{searchTerms}";
+                      }
+                    ];
+                  }
+                ];
+                icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+                definedAliases = [ "@np" ];
+              };
+              nixos-wiki = {
+                name = "NixOS Wiki";
+                urls = [ { template = "https://wiki.nixos.org/w/index.php?search={searchTerms}"; } ];
+                iconMapObj."16" = "https://wiki.nixos.org/favicon.ico";
+                definedAliases = [ "@nw" ];
+              };
+              mojeek = {
+                name = "Mojeek";
+                urls = [ { template = "https://www.mojeek.com/search?q={searchTerms}"; } ];
+                iconMapObj."16" = "https://www.mojeek.com/favicon.png";
+                definedAliases = [ "@mojeek" ];
+              };
+            };
+          };
           settings = lib.mkMerge [
             (lib.mkIf config.xdg.portal.enable {
               # 0 = never, 1 = always, 2 = automatic
@@ -24,7 +71,7 @@ in
             }
           ];
           userContent = ''
-            @import "${ ./. }/clocktower.css"
+            @import "${./.}/clocktower.css"
           '';
         };
       };
