@@ -30,6 +30,7 @@ in
             }
           '';
         };
+        lang.rust.enable = true;
       };
       plugins = {
         live-share = ''
