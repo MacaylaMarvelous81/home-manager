@@ -21,7 +21,7 @@ in
         default = {
           search = {
             force = true;
-            default = "mojeek";
+            default = "searxng";
             engines = {
               nix-packages = {
                 name = "Nix Packages";
@@ -58,6 +58,19 @@ in
                 urls = [ { template = "https://www.mojeek.com/search?q={searchTerms}"; } ];
                 iconMapObj."16" = "https://www.mojeek.com/favicon.png";
                 definedAliases = [ "@mojeek" ];
+              };
+              searxng = {
+                name = "SearXNG";
+                description = "SearXNG is a metasearch engine that respects your privacy.";
+                urls = [
+                  { template = "https://searx.tiekoetter.com/search?q={searchTerms}"; }
+                  {
+                    template = "https://searx.tiekoetter.com/autocompleter?q={searchTerms}";
+                    type = "application/x-suggestions+json";
+                  }
+                ];
+                iconMapObj."16" = "https://searx.tiekoetter.com/static/themes/simple/img/favicon.png";
+                definedAliases = [ "@searxng" ];
               };
             };
           };
