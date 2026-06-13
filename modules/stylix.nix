@@ -86,8 +86,6 @@ in
   config = lib.mkIf cfg.enable {
     fonts.fontconfig.enable = true;
 
-    usermod.unfree.pkgnames = [ "crab_leaf_linux_cursor_by_nekomarunosuke_dea7q36.tar.gz" ];
-
     stylix = {
       enable = true;
 
@@ -100,8 +98,8 @@ in
       cursor = {
         # package = pkgs.vanilla-dmz;
         # name = "Vanilla-DMZ";
-        package = macaylamarvelous81-pkgs.crab-leaf-linux-cursor;
-        name = "Crab_Leaf_Linux_Cursor";
+        package = macaylamarvelous81-pkgs.scribble-scribble-scribble-cursor;
+        name = "scribble-scribble-scribble-cursor";
         size = 24;
       };
 
