@@ -21,7 +21,7 @@ in
         default = {
           search = {
             force = true;
-            default = "searxng";
+            default = "ddg";
             engines = {
               nix-packages = {
                 name = "Nix Packages";
