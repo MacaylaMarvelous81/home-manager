@@ -38,8 +38,7 @@ in
             "azratul/live-share.nvim",
             config = function()
               require("live-share.provider").register("loopback", {
-                command = function(_, port, service_url)
-                  return string.format(
+                command = function(_, port, service_url) return string.format(
                     [[printf 'tcp://127.0.0.1:%d\n' > %s; sleep infinity]],
                     port, service_url)
                 end,
@@ -80,6 +79,11 @@ in
           "Mod+Z".action = spawn "${config.programs.neovide.package}/bin/neovide";
         };
       };
+    };
+
+    home.sessionVariables = {
+      # programs.lazyvim uses programs.neovim
+      EDITOR = "${config.programs.neovim.package}/bin/nvim";
     };
   };
 }
