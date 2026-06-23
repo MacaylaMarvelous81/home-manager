@@ -1,12 +1,11 @@
 { config, ... }:
 let
-  sources = import ./nix/sources.nix;
+  sources = import ./tamal { };
 in {
   imports = [
     ../../modules
 
     (import ../../inputs.nix { inherit sources; })
-    ((import sources.nixvim).homeModules.nixvim)
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -84,7 +83,7 @@ in {
   usermod.git.enable = true;
   usermod.shell.enable = true;
   usermod.ssh.enable = true;
-  usermod.nixvim.enable = true;
+  usermod.neovim.enable = true;
   usermod.home-manager = {
     inherit sources;
     enable = true;

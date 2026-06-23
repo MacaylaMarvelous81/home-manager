@@ -1,0 +1,14 @@
+{"v":"1.1.0"
+,"i":{
+"nixpkgs":{"sn":"nixpkgs-src","kd":[1,{"ft":0,"ur":"https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1017567.3e41b24abd26/nixexprs.tar.xz","ms":[]}],"ha":{"al":0,"vl":"sha256-eM+l4TVD26SNoEjcxRcpispqZi5Qrqj/G0ZY4LfqwfM="},"fv":"https://releases.nixos.org/nixpkgs/nixpkgs-26.11pre1017567.3e41b24abd26","ps":[]}
+,"erosanix":{"sn":"erosanix-src","kd":[1,{"ft":0,"ur":"https://github.com/emmanuelrosa/erosanix/archive/c87e6baa6a01855bc65e281b66ecf3ac5a96ce46.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-bNGZgNJR3tYUlZet24Jkt0nkC2HQqHNj9y7XMfqQEX4="},"fv":"c87e6baa6a01855bc65e281b66ecf3ac5a96ce46","ps":[]}
+,"flake-compat":{"sn":"flake-compat-src","kd":[1,{"ft":0,"ur":"https://github.com/NixOS/flake-compat/archive/5edf11c44bc78a0d334f6334cdaf7d60d732daab.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-vNpUSpF5Nuw8xvDLj2KCwwksIbjua2LZCqhV1LNRDns="},"fv":"5edf11c44bc78a0d334f6334cdaf7d60d732daab","ps":[]}
+,"home-manager":{"sn":"home-manager-src","kd":[1,{"ft":0,"ur":"https://github.com/nix-community/home-manager/archive/471a1d2f840eb7fcbdfd541d99c13a64096f46db.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-SA7LyrayyZBvtzZnesnSLV7haciFuVLeZaX2hd5v4j4="},"fv":"471a1d2f840eb7fcbdfd541d99c13a64096f46db","ps":[]}
+,"lazyvim-nix":{"sn":"lazyvim-nix-src","kd":[1,{"ft":0,"ur":"https://github.com/pfassina/lazyvim-nix/archive/d1f9bd2bfff35708dfaf75351bce06580a862f61.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-ezB1SLk4wyBkJZC9NHKn21FsheyVdmFha+FO/6tflO4="},"fv":"d1f9bd2bfff35708dfaf75351bce06580a862f61","ps":[]}
+,"niri-flake":{"sn":"niri-flake-src","kd":[1,{"ft":0,"ur":"https://github.com/sodiboo/niri-flake/archive/493ce1e33e72f86312584f331c8cf52b3432ec99.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-VKrApQ3WCkEe9D8DbaeFjGqLAh7zqYGYjbQYtY5ikxc="},"fv":"493ce1e33e72f86312584f331c8cf52b3432ec99","ps":[]}
+,"sops-nix":{"sn":"sops-nix-src","kd":[1,{"ft":0,"ur":"https://github.com/Mic92/sops-nix/archive/56b24064fdcaedca53553b1a6d607fd23b613a24.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-478kKQBvK6SYTOdN2h9jhKJv94nbXRbFMfuL1WshErg="},"fv":"56b24064fdcaedca53553b1a6d607fd23b613a24","ps":[]}
+,"stylix":{"sn":"stylix-src","kd":[1,{"ft":0,"ur":"https://github.com/nix-community/stylix/archive/a6a493119e492e15874caf6f7f8c7e572e64c655.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-muBZG4O/agq/ljgHr6c3AsobIWgODAS6vf50xIS7o+Q="},"fv":"a6a493119e492e15874caf6f7f8c7e572e64c655","ps":[]}
+,"wrappers":{"sn":"wrappers-src","kd":[1,{"ft":0,"ur":"https://github.com/BirdeeHub/nix-wrapper-modules/archive/6e7f66fa2cdf4d63162580b438f7fcf87c28a46f.tar.gz","ms":[]}],"ha":{"al":0,"vl":"sha256-vAmbArdCyjqpVW+37aCy/PMBOLIqukUXLQuEKLwUhA4="},"fv":"6e7f66fa2cdf4d63162580b438f7fcf87c28a46f","ps":[]}
+}
+,"p":{}
+}
