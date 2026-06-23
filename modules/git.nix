@@ -25,12 +25,12 @@ in
         init.defaultBranch = "master";
         user = {
           name = "Jomar Milan";
-          email = "jomarm@jomarm.com";
+          email = "jomarm@pyrodax.com";
         };
         sendemail = {
           smtpencryption = "ssl";
-          smtpserver = "smtp.emailarray.com";
-          smtpuser = "jomarm@jomarm.com";
+          smtpserver = "smtp.purelymail.com";
+          smtpuser = "jomarm@pyrodax.com";
         };
         "diff \"json\"".textconv = "${pkgs.jq}/bin/jq .";
       };

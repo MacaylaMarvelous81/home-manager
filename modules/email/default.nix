@@ -10,23 +10,23 @@ in {
     accounts.email.certificatesFile = "${ pkgs.cacert }/etc/ssl/certs/ca-bundle.crt";
     accounts.email.accounts = {
       "jomarm" = {
-        address = "jomarm@jomarm.com";
+        address = "jomarm@pyrodax.com";
         gpg = {
           encryptByDefault = true;
           key = "6AC46A6F9A5618D8";
           signByDefault = true;
         };
         imap = {
-          host = "imap.emailarray.com";
+          host = "imap.purelymail.com";
           port = 993;
           tls.enable = true;
         };
         smtp = {
-          host = "smtp.emailarray.com";
+          host = "smtp.purelymail.com";
           port = 465;
           tls.enable = true;
         };
-        userName = "jomarm@jomarm.com";
+        userName = "jomarm@pyrodax.com";
         passwordCommand = "cat ${ config.sops.secrets."email/accounts/jomarm".path }";
         primary = true;
         realName = "Jomar Milan";
