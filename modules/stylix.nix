@@ -114,8 +114,8 @@ in
         sansSerif = {
           # package = pkgs.lato;
           # name = "Lato";
-          package = pkgs.cantarell-fonts;
-          name = "Cantarell";
+          package = pkgs.ibm-plex.override { families = [ "sans" ]; };
+          name = "IBM Plex Sans";
         };
         monospace = {
           package = pkgs.nerd-fonts.fira-code;
