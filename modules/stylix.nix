@@ -118,8 +118,8 @@ in
           name = "IBM Plex Sans";
         };
         monospace = {
-          package = pkgs.nerd-fonts.fira-code;
-          name = "FiraCode Nerd Font";
+          package = pkgs.nerd-fonts._0xproto;
+          name = "0xProto Nerd Font";
         };
       };
 
