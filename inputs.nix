@@ -13,7 +13,7 @@ in
       erosanix = (import sources.flake-compat) { src = sources.erosanix; };
     in
     {
-      inherit erosanix;
+      inherit sources erosanix;
       wrappers = import ./wrappers.nix { inherit pkgs lib wrappers; };
       macaylamarvelous81-pkgs = import ./nix-exprs { inherit pkgs lib erosanix; };
     };
